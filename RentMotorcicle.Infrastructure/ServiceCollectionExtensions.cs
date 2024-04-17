@@ -12,6 +12,8 @@ namespace RentMotorcicle.Infrastructure
         {
             services.RegisterDatabase(configuration);
 
+            services.ConfigureServices();
+
             return services;
         }
 

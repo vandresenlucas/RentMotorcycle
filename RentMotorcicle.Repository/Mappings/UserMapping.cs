@@ -4,7 +4,7 @@ using RentMotorcicle.Domain;
 
 namespace RentMotorcicle.Repository.Mappings
 {
-    public class UserMapping : IEntityTypeConfiguration<User>
+    public sealed class UserMapping : IEntityTypeConfiguration<User>
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {

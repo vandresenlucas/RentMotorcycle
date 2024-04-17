@@ -10,7 +10,7 @@ namespace RentMotorcicle.Infrastructure.Providers
     {
         public static IServiceCollection RegisterDatabase(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<RentMotorcicleContext>(options => options.UseSqlServer(configuration.GetConnectionString("Default")));
+            services.AddDbContext<RentMotorcicleContext>(options => options.UseNpgsql(configuration.GetConnectionString("Default")));
             services.AddScoped<DbContext, RentMotorcicleContext>();
 
             return services;

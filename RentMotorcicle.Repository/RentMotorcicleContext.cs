@@ -5,6 +5,7 @@ namespace RentMotorcicle.Repository
 {
     public class RentMotorcicleContext : DbContext
     {
+
         public RentMotorcicleContext(DbContextOptions<RentMotorcicleContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
