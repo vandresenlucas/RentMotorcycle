@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RentMotorcicle.Repository;
+using RentMotorcicle.Domain.UserAggregate;
+using RentMotorcicle.Repository.Repositories;
 
 namespace RentMotorcicle.Infrastructure.Providers
 {

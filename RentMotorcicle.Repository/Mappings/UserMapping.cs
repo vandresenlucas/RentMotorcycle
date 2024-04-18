@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using RentMotorcicle.Domain;
+using RentMotorcicle.Domain.UserAggregate;
 
 namespace RentMotorcicle.Repository.Mappings
 {
