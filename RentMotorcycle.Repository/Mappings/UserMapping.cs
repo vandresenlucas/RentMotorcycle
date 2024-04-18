@@ -8,13 +8,14 @@ namespace RentMotorcycle.Repository.Mappings
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("User");
-            builder.HasKey(user => user.Id).HasName("Id");
+            builder.HasKey(user => user.Id);
             builder.HasIndex(user => user.Email).IsUnique();
-            builder.Property(property => property.Id).HasColumnName("Id").ValueGeneratedOnAdd();
-            builder.Property(property => property.Name).HasColumnName("Name").HasMaxLength(50).IsRequired();
-            builder.Property(property => property.Email).HasColumnName("Email").HasMaxLength(50).IsRequired();
-            builder.Property(property => property.Password).HasColumnName("Password").HasMaxLength(100).IsRequired();
+            builder.Property(property => property.Id).ValueGeneratedOnAdd().IsRequired();
+            builder.Property(property => property.Name).HasMaxLength(50).IsRequired();
+            builder.Property(property => property.Email).HasMaxLength(50).IsRequired();
+            builder.Property(property => property.Password).HasMaxLength(100).IsRequired();
+            builder.Property(property => property.CreatedDate).IsRequired();
+            builder.Property(property => property.UpdatedDate);
         }
     }
 }
