@@ -1,4 +1,6 @@
-﻿using RentMotorcycle.Infrastructure;
+﻿using FluentValidation.AspNetCore;
+using RentMotorcycle.Infrastructure;
+using RentMotorcycle.Infrastructure.Providers.Customization;
 
 namespace RentMotorcycle
 {
@@ -20,7 +22,10 @@ namespace RentMotorcycle
                 .AllowAnyHeader();
             }));
 
-            services.AddControllers();
+            services.AddControllers()
+                .ConfigureApiBehaviorOptions(options => options.ErrorCustomization());
+            
+            services.AddFluentValidationAutoValidation();
             services.AddSwaggerGen();
 
             services.RegisterServices(Configuration);

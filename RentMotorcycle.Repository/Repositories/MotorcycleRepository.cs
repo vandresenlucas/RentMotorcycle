@@ -1,4 +1,5 @@
-﻿using RentMotorcycle.Data.MotorcycleAggregate;
+﻿using Microsoft.EntityFrameworkCore;
+using RentMotorcycle.Data.MotorcycleAggregate;
 
 namespace RentMotorcycle.Repository.Repositories
 {
@@ -7,5 +8,8 @@ namespace RentMotorcycle.Repository.Repositories
         public MotorcycleRepository(RentMotorcycleContext context) : base(context)
         {
         }
+
+        public async Task<Motorcycle?> GetByLicensePlate(string licensePlate)
+            => await _context.Set<Motorcycle>().FirstOrDefaultAsync(motorcycle => motorcycle.LicensePlate == licensePlate);
     }
 }

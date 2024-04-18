@@ -49,8 +49,8 @@ namespace RentMotorcycle.Repository.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("Year")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
