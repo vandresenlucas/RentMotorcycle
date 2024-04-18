@@ -3,5 +3,3 @@ bin
 .vs
 output
 GPUCache
-appsettings.json
-appsettings.Development.json
