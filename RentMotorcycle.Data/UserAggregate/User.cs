@@ -9,20 +9,20 @@ namespace RentMotorcycle.Domain.UserAggregate
             string name, 
             string email, 
             string password, 
-            Perfil perfil,
+            Profile profile,
             DateTime createdDate)
         {
             Name = name;
             Email = email;
             Password = password;
-            Perfil = perfil;
+            Profile = profile;
             CreatedDate = createdDate;
         }
 
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public Perfil Perfil { get; set; }
+        public Profile Profile { get; set; }
 
     }
 }

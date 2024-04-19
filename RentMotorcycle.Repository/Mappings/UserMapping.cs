@@ -13,7 +13,7 @@ namespace RentMotorcycle.Repository.Mappings
             builder.Property(property => property.Name).HasMaxLength(50).IsRequired();
             builder.Property(property => property.Email).HasMaxLength(50).IsRequired();
             builder.Property(property => property.Password).HasMaxLength(100).IsRequired();
-            builder.Property(property => property.Perfil).IsRequired();
+            builder.Property(property => property.Profile).IsRequired();
         }
     }
 }

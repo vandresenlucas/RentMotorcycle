@@ -9,7 +9,7 @@ namespace RentMotorcycle.Application.Users
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public Perfil Perfil { get; set; }
+        public Profile Perfil { get; set; }
 
         public static implicit operator User(AddUserCommand command)
         {
@@ -20,7 +20,7 @@ namespace RentMotorcycle.Application.Users
                 command.Name,
                 command.Email,
                 command.Password,
-                Perfil.Deliveryman,
+                Profile.Deliveryman,
                 DateTime.UtcNow);
         }
     }

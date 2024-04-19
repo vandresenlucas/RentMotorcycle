@@ -34,7 +34,7 @@ namespace RentMotorcycle.Application.Users
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty()
                 .WithMessage("O campo 'Perfil' deve ser preenchido!!")
-                .Must(profile => !(profile == Perfil.Admin || profile == Perfil.Deliveryman))
+                .Must(profile => !(profile == Profile.Admin || profile == Profile.Deliveryman))
                 .WithMessage("O campo 'Perfil' é inválido!!");
         }
 
