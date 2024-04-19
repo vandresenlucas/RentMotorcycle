@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using RentMotorcycle.Application.Deliverymans.Services;
 using RentMotorcycle.Data.DeliveryManAggregate;
 using RentMotorcycle.Data.MotorcycleAggregate;
 using RentMotorcycle.Domain.UserAggregate;
@@ -13,6 +14,7 @@ namespace RentMotorcycle.Infrastructure.Providers
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IMotorcycleRepository, MotorcycleRepository>();
             services.AddScoped<IDeliverymanRepository, DeliverymanRepository>();
+            services.AddScoped<IDeliverymanService, DeliverymanService>();
 
             return services;
         }

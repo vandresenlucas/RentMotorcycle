@@ -29,7 +29,7 @@ namespace RentMotorcycle.Data.DeliveryManAggregate
         public DateTime DateOfBirth { get; set; }
         public string LicenseDriverNumber { get; set; }
         public LicenseType LicenseType { get; set; }
-        public string LicenseImage { get; set; }
+        public string? LicenseImage { get; set; }
         public Guid UserId { get; set; }
         public User UserFk { get; set; }
     }

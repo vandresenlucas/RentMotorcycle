@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using RentMotorcycle.Application.Deliverymans;
 using RentMotorcycle.Domain.ProfileAggregate;
 using RentMotorcycle.Domain.UserAggregate;
 
@@ -9,7 +10,8 @@ namespace RentMotorcycle.Application.Users
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-        public Profile Perfil { get; set; }
+        public Profile Profile { get; set; }
+        public AddDeliverymanCommand? DeliveryMan { get; set; }
 
         public static implicit operator User(AddUserCommand command)
         {
@@ -20,7 +22,7 @@ namespace RentMotorcycle.Application.Users
                 command.Name,
                 command.Email,
                 command.Password,
-                Profile.Deliveryman,
+                command.Profile,
                 DateTime.UtcNow);
         }
     }

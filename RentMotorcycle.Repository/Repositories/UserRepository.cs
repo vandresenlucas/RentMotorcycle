@@ -1,4 +1,5 @@
-﻿using RentMotorcycle.Domain.UserAggregate;
+﻿using Microsoft.EntityFrameworkCore;
+using RentMotorcycle.Domain.UserAggregate;
 
 namespace RentMotorcycle.Repository.Repositories
 {
@@ -7,5 +8,8 @@ namespace RentMotorcycle.Repository.Repositories
         public UserRepository(RentMotorcycleContext context) : base(context)
         {
         }
+
+        public async Task<User?> GetByEmail(string email)
+            => await _context.Set<User>().FirstOrDefaultAsync(motorcycle => motorcycle.Email.Equals(email));
     }
 }

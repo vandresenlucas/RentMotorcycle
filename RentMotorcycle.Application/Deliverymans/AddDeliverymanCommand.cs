@@ -1,7 +1,6 @@
 ﻿using MediatR;
 using RentMotorcycle.Data.DeliveryManAggregate;
 using RentMotorcycle.Data.LicenseTypeAggregate;
-using RentMotorcycle.Domain.UserAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans
 {
@@ -12,7 +11,7 @@ namespace RentMotorcycle.Application.Deliverymans
         public DateTime DateOfBirth { get; set; }
         public string LicenseDriverNumber { get; set; }
         public LicenseType LicenseType { get; set; }
-        public string LicenseImage { get; set; }
+        public string? LicenseImage { get; set; }
         public Guid UserId { get; set; }
 
 
@@ -24,7 +23,7 @@ namespace RentMotorcycle.Application.Deliverymans
             return new(
                 command.IdentifyCode,
                 command.Cnpj,
-                command.DateOfBirth,
+                DateTime.SpecifyKind(command.DateOfBirth, DateTimeKind.Utc),
                 command.LicenseDriverNumber,
                 command.LicenseType,
                 command.LicenseImage,

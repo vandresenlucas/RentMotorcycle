@@ -1,4 +1,5 @@
 ﻿using RentMotorcycle.Application.Base;
+using RentMotorcycle.Application.Deliverymans;
 using RentMotorcycle.Domain.ProfileAggregate;
 using RentMotorcycle.Domain.UserAggregate;
 
@@ -9,8 +10,11 @@ namespace RentMotorcycle.Application.Users
         public UserResult(
             bool success = true, 
             string? message = null,
-            User? user = null) : base(success, message)
+            User? user = null,
+            DeliverymanResult? deliveryResult = null) : base(success, message)
         {
+            User = user;
+            DeliveryResult = deliveryResult;
         }
 
         public User? User { get; set; }
@@ -18,5 +22,6 @@ namespace RentMotorcycle.Application.Users
         public string Email { get; set; }
         public string Password { get; set; }
         public Profile Perfil { get; set; }
+        public DeliverymanResult? DeliveryResult { get; set; }
     }
 }
