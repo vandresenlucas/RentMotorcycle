@@ -19,14 +19,17 @@ namespace RentMotorcycle.Application.Tests
         [Fact]
         public async Task Handle_With_Valid_Motorcycle_Returns_Motorcycle_Result_With_Added_Motorcycle()
         {
+            //Arrange
             var motorcycle = MotorcycleTestModels.MotorcycleDefault();
             var command = CommandMotorcycleTestModels.AddMotorcycleCommandDefault();
 
             _repositoryMock.Setup(repo => repo.GetByLicensePlate("ABC123")).ReturnsAsync((Motorcycle)null);
             _repositoryMock.Setup(repo => repo.AddAsync(It.IsAny<Motorcycle>())).ReturnsAsync(motorcycle);
 
+            //Act
             var result = await _handler.Handle(command, CancellationToken.None);
 
+            //Assert
             Assert.True(result.Success);
             Assert.Equivalent(new MotorcycleResult(motorcycle: motorcycle), result);
             _repositoryMock.Verify(repo => repo.GetByLicensePlate("ABC123"), Times.Once);
@@ -36,11 +39,15 @@ namespace RentMotorcycle.Application.Tests
         [Fact]
         public async Task Handle_With_Duplicate_License_Plate_Returns_Motorcycle_Result_With_Error()
         {
+            //Arrange
             var command = CommandMotorcycleTestModels.AddMotorcycleCommandDefault();
             _repositoryMock.Setup(repo => repo.GetByLicensePlate("ABC123")).ReturnsAsync(MotorcycleTestModels.MotorcycleDefault());
 
+            //Act
             var result = await _handler.Handle(command, CancellationToken.None);
 
+
+            //Assert
             Assert.False(result.Success);
             Assert.Contains("ABC123", result.Message);
             _repositoryMock.Verify(repo => repo.GetByLicensePlate("ABC123"), Times.Once);

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace RentMotorcycle.Infrastructure.Providers
 {
@@ -8,6 +9,9 @@ namespace RentMotorcycle.Infrastructure.Providers
         {
             var assembly = AppDomain.CurrentDomain.Load("RentMotorcycle.Application");
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(assembly));
+
+            AssemblyScanner.FindValidatorsInAssembly(assembly)
+                .ForEach(a => services.AddScoped(a.InterfaceType, a.ValidatorType));
 
             return services;
         }
