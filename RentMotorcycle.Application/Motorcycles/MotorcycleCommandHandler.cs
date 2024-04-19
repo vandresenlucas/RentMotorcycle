@@ -21,7 +21,7 @@ namespace RentMotorcycle.Application.Motorcycles
             if (motorcycleFound != null)
                 return new MotorcycleResult(
                     false, 
-                    message: string.Format($"A placa '{motorCycle.LicensePlate}', já está cadastrada no sistema!"));
+                    message: string.Format($"A moto com placa '{motorCycle.LicensePlate}', já está cadastrada no sistema!"));
 
             var newMotorcycle = await _motorcycleRepository.AddAsync(motorCycle);
 
