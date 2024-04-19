@@ -1,5 +1,4 @@
 ﻿using RentMotorcycle.Application.Base;
-using RentMotorcycle.Data.ProfileAggregate;
 using RentMotorcycle.Domain.ProfileAggregate;
 using RentMotorcycle.Domain.UserAggregate;
 

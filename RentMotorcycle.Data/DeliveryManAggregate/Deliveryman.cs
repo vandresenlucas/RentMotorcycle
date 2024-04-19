@@ -1,15 +1,18 @@
 ﻿using RentMotorcycle.Data.Base;
-using RentMotorcycle.Data.ProfileAggregate;
+using RentMotorcycle.Data.LicenseTypeAggregate;
+using RentMotorcycle.Domain.UserAggregate;
 
 namespace RentMotorcycle.Data.DeliveryManAggregate
 {
     public class Deliveryman : EntityBase
     {
-        public string IdentityCode { get; set; } = string.Empty;
-        public string Cnpj { get; set; } = string.Empty;
-        public DateTime? DateOfBirth { get; set; } = null;
-        public string LicenseDriverNumber { get; set; } = string.Empty;
-        public LicenseType? LicenseType { get; set; } = null;
-        public string LicenseImage { get; set; } = string.Empty;
+        public string IdentifyCode { get; set; }
+        public string Cnpj { get; set; }
+        public DateTime? DateOfBirth { get; set; }
+        public string LicenseDriverNumber { get; set; }
+        public LicenseType? LicenseType { get; set; }
+        public string LicenseImage { get; set; }
+        public Guid UserId { get; set; }
+        public User UserFk { get; set; }
     }
 }
