@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Motorcycles;
 
 namespace RentMotorcycle.Controllers
@@ -26,7 +27,7 @@ namespace RentMotorcycle.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new BaseResult(false, ex.Message));
             }
         }
     }

@@ -9,12 +9,9 @@ namespace RentMotorcycle.Infrastructure.Providers.Customization
         {
             options.InvalidModelStateResponseFactory = context =>
             {
-                var errors = new Dictionary<string, string[]>();
+                var erro = context.ModelState.Values.FirstOrDefault().Errors.Select(e => e.ErrorMessage).FirstOrDefault();
 
-                foreach (var (key, value) in context.ModelState)
-                    errors.Add(key, value.Errors.Select(e => e.ErrorMessage).ToArray());
-
-                return new BadRequestObjectResult(new BaseResult(false, errorMessages: errors));
+                return new BadRequestObjectResult(new BaseResult(false, message: erro));
             };
         }
     }

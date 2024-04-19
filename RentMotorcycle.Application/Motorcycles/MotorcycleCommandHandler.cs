@@ -18,24 +18,14 @@ namespace RentMotorcycle.Application.Motorcycles
 
             var motorcycleFound = await _motorcycleRepository.GetByLicensePlate(request.LicensePlate);
 
-            if (motorcycleFound != null) 
-                return new MotorcycleResult() 
-                { 
-                    IdentifyCode = request.IdentifyCode,
-                    Year = request.Year,
-                    Model = request.Model,
-                    LicensePlate = request.LicensePlate
-                };
+            if (motorcycleFound != null)
+                return new MotorcycleResult(
+                    false, 
+                    message: string.Format($"A placa '{motorCycle.LicensePlate}', já está cadastrada no sistema!"));
 
             var newMotorcycle = await _motorcycleRepository.AddAsync(motorCycle);
 
-            return new MotorcycleResult()
-            {
-                IdentifyCode = newMotorcycle.IdentifyCode,
-                Year = newMotorcycle.Year,
-                Model = newMotorcycle.Model,
-                LicensePlate = newMotorcycle.LicensePlate
-            };
+            return new MotorcycleResult(motorcycle: newMotorcycle);
         }
     }
 }

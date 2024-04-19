@@ -4,16 +4,13 @@
     {
         public bool Success { get; set; }
         public string? Message { get; set; }
-        public Dictionary<string, string[]>? ErrorMessages { get; set; }
 
         public BaseResult(
             bool success,
-            string? message = null,
-            Dictionary<string, string[]>? errorMessages = null)
+            string? message = null)
         {
             Success = success;
             Message = message;
-            ErrorMessages = errorMessages;
         }
     }
 }
