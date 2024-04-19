@@ -18,7 +18,5 @@ namespace RentMotorcycle.Repository.Repositories
 
         public async Task<bool> VerifyExistsUserDeliveryman(Guid userId)
             => await _context.Set<Deliveryman>().AnyAsync(deliveryman => deliveryman.UserId == userId);
-
-
     }
 }

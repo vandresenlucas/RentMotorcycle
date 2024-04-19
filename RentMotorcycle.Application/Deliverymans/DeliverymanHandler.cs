@@ -22,15 +22,10 @@ namespace RentMotorcycle.Application.Deliverymans
         {
             Deliveryman deliveryman = request;
 
-            if (await _deliverymanService.GetByCnpj(deliveryman.Cnpj) != null)
-                return new DeliverymanResult(
-                    false,
-                    message: string.Format($"O entregador com CNPJ '{deliveryman.Cnpj}', já está cadastrado no sistema!!"));
+            var deliveryManduplicated = await _deliverymanService.VerifyDuplicatedDeliveryman(request.Cnpj, request.LicenseDriverNumber);
 
-            if (await _deliverymanService.GetByCnpj(deliveryman.LicenseDriverNumber) != null)
-                return new DeliverymanResult(
-                    false,
-                    message: string.Format($"O entregador com CNPJ '{deliveryman.Cnpj}', já está cadastrado no sistema!!"));
+            if (!deliveryManduplicated.Success)
+                return deliveryManduplicated;
 
             var newDeliveryman = await _deliverymanRepository.AddAsync(deliveryman);
 
