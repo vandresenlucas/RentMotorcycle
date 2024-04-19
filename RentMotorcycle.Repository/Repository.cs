@@ -13,10 +13,17 @@ namespace RentMotorcycle.Repository
 
         public async Task<TEntity> AddAsync(TEntity entity)
         {
-            var result = await _context.AddAsync(entity);
-            _context.SaveChanges();
+            try
+            {
+                var result = await _context.AddAsync(entity);
+                _context.SaveChanges();
 
-            return entity;
+                return entity;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception();
+            }
         }
     }
 }

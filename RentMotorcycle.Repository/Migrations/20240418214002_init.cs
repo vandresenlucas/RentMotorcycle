@@ -17,7 +17,7 @@ namespace RentMotorcycle.Repository.Migrations
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
                     IdentifyCode = table.Column<string>(type: "character varying(6)", maxLength: 6, nullable: false),
-                    Year = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Year = table.Column<int>(type: "integer", nullable: false),
                     Model = table.Column<string>(type: "character varying(30)", maxLength: 30, nullable: false),
                     LicensePlate = table.Column<string>(type: "character varying(10)", maxLength: 10, nullable: false),
                     CreatedDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),

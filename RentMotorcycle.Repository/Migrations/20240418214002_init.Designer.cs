@@ -12,7 +12,7 @@ using RentMotorcycle.Repository;
 namespace RentMotorcycle.Repository.Migrations
 {
     [DbContext(typeof(RentMotorcycleContext))]
-    [Migration("20240418180859_init")]
+    [Migration("20240418214002_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -52,8 +52,8 @@ namespace RentMotorcycle.Repository.Migrations
                     b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("Year")
-                        .HasColumnType("timestamp with time zone");
+                    b.Property<int>("Year")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
