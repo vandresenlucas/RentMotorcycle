@@ -3,6 +3,6 @@
     public enum Perfil
     {
         Admin = 1,
-        Entregador = 2
+        Deliveryman = 2
     }
 }

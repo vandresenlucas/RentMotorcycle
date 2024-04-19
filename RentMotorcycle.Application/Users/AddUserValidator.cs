@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using RentMotorcycle.Domain.ProfileAggregate;
 using System.Text.RegularExpressions;
 
 namespace RentMotorcycle.Application.Users
@@ -28,6 +29,13 @@ namespace RentMotorcycle.Application.Users
                 .WithMessage("O campo 'Senha' deve ser preenchido!!")
                 .MaximumLength(100)
                 .WithMessage("O campo 'Senha' deve ter no máximo 100 caracteres!!");
+
+            RuleFor(user => user.Perfil)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty()
+                .WithMessage("O campo 'Perfil' deve ser preenchido!!")
+                .Must(profile => !(profile == Perfil.Admin || profile == Perfil.Deliveryman))
+                .WithMessage("O campo 'Perfil' é inválido!!");
         }
 
         public bool IsEmail(string email)

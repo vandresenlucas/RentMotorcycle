@@ -18,6 +18,7 @@ namespace RentMotorcycle.Application.Users
             User user = request;
 
             var newUser = await _userRepository.AddAsync(user);
+
             
             return new UserResult(user: newUser);
         }

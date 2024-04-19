@@ -20,7 +20,7 @@ namespace RentMotorcycle.Application.Users
                 command.Name,
                 command.Email,
                 command.Password,
-                Perfil.Entregador,
+                Perfil.Deliveryman,
                 DateTime.UtcNow);
         }
     }

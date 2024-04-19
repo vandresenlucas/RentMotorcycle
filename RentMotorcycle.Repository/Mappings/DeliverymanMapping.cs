@@ -14,7 +14,7 @@ namespace RentMotorcycle.Repository.Mappings
             builder.Property(property => property.Cnpj).HasMaxLength(18).IsRequired();
             builder.Property(property => property.LicenseDriverNumber).HasMaxLength(20).IsRequired();
             builder.Property(property => property.LicenseType).IsRequired();
-            builder.Property(property => property.LicenseImage).IsRequired();
+            builder.Property(property => property.LicenseImage);
             builder.HasOne(a => a.UserFk).WithOne();
         }
     }
