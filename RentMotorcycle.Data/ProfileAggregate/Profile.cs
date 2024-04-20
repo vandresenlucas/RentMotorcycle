@@ -1,8 +1,8 @@
 ﻿namespace RentMotorcycle.Domain.ProfileAggregate
 {
-    public enum Perfil
+    public enum Profile
     {
         Admin = 1,
-        Entregador = 2
+        Deliveryman = 2
     }
 }

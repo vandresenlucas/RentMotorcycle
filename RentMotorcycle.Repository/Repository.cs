@@ -22,7 +22,7 @@ namespace RentMotorcycle.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception();
+                throw new Exception(ex.Message);
             }
         }
     }

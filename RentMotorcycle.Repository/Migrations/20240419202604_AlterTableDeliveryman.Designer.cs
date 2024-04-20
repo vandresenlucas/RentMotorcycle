@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RentMotorcycle.Repository;
@@ -11,9 +12,11 @@ using RentMotorcycle.Repository;
 namespace RentMotorcycle.Repository.Migrations
 {
     [DbContext(typeof(RentMotorcycleContext))]
-    partial class RentMotorcycleContextModelSnapshot : ModelSnapshot
+    [Migration("20240419202604_AlterTableDeliveryman")]
+    partial class AlterTableDeliveryman
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,6 +53,7 @@ namespace RentMotorcycle.Repository.Migrations
                         .HasColumnType("character varying(20)");
 
                     b.Property<string>("LicenseImage")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("LicenseType")
@@ -137,7 +141,7 @@ namespace RentMotorcycle.Repository.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
-                    b.Property<int>("Profile")
+                    b.Property<int>("Perfil")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("UpdatedDate")
