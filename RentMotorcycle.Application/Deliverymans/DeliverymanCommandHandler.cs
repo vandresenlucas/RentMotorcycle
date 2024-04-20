@@ -1,16 +1,15 @@
 ﻿using MediatR;
 using RentMotorcycle.Application.Deliverymans.Services;
 using RentMotorcycle.Data.DeliveryManAggregate;
-using RentMotorcycle.Data.MotorcycleAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans
 {
-    public class DeliverymanHandler : IRequestHandler<AddDeliverymanCommand, DeliverymanResult>
+    public class DeliverymanCommandHandler : IRequestHandler<AddDeliverymanCommand, DeliverymanResult>
     {
         private readonly IDeliverymanRepository _deliverymanRepository;
         private readonly IDeliverymanService _deliverymanService;
 
-        public DeliverymanHandler(
+        public DeliverymanCommandHandler(
             IDeliverymanRepository deliverymanRepository, 
             IDeliverymanService deliverymanService)
         {

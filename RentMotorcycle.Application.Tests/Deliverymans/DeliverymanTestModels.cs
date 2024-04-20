@@ -1,0 +1,19 @@
+﻿using RentMotorcycle.Data.DeliveryManAggregate;
+using RentMotorcycle.Data.LicenseTypeAggregate;
+
+namespace RentMotorcycle.Application.Tests.Deliverymans
+{
+    public static class DeliverymanTestModels
+    {
+        public static Deliveryman DeliverymanDefault()
+            => new Deliveryman(
+                "123123",
+                "123456789123",
+                Convert.ToDateTime("15/04/1998"),
+                "123141231",
+                LicenseType.A,
+                null,
+                Guid.NewGuid()
+                );
+    }
+}

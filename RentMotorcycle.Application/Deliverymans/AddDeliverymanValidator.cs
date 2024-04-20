@@ -39,9 +39,7 @@ namespace RentMotorcycle.Application.Deliverymans
             RuleFor(deliveryman => deliveryman.LicenseType)
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty()
-                .WithMessage("O campo 'Perfil' deve ser preenchido!!")
-                .Must(licenseType => !(licenseType == LicenseType.A || licenseType == LicenseType.B || licenseType == LicenseType.AB))
-                .WithMessage("O campo 'Perfil' é inválido!!");
+                .WithMessage("O campo 'Tipo CNH' deve ser preenchido!!");
         }
     }
 }

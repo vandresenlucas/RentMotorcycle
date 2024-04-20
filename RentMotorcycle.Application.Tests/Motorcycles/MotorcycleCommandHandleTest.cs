@@ -1,16 +1,15 @@
 using Moq;
 using RentMotorcycle.Application.Motorcycles;
-using RentMotorcycle.Application.Tests.Motorcycles;
 using RentMotorcycle.Data.MotorcycleAggregate;
 
-namespace RentMotorcycle.Application.Tests
+namespace RentMotorcycle.Application.Tests.Motorcycles
 {
-    public class AddMotorcycleCommandTest
+    public class MotorcycleCommandHandleTest
     {
         private readonly MotorcycleCommandHandler _handler;
         private readonly Mock<IMotorcycleRepository> _repositoryMock;
 
-        public AddMotorcycleCommandTest()
+        public MotorcycleCommandHandleTest()
         {
             _repositoryMock = new Mock<IMotorcycleRepository>();
             _handler = new MotorcycleCommandHandler(_repositoryMock.Object);

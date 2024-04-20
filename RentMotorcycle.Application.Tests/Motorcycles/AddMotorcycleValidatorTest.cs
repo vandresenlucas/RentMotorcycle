@@ -1,17 +1,12 @@
 ﻿using FluentValidation.TestHelper;
 using RentMotorcycle.Application.Motorcycles;
-using RentMotorcycle.Data.MotorcycleAggregate;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RentMotorcycle.Application.Tests.Motorcycles
 {
     public class AddMotorcycleValidatorTest
     {
         private readonly AddMotorcycleValidator _validator;
+
         public AddMotorcycleValidatorTest()
         {
             _validator = new AddMotorcycleValidator();
