@@ -2,7 +2,7 @@
 using RentMotorcycle.Application.Deliverymans.Services;
 using RentMotorcycle.Data.DeliveryManAggregate;
 using RentMotorcycle.Data.MotorcycleAggregate;
-using RentMotorcycle.Domain.UserAggregate;
+using RentMotorcycle.Data.UserAggregate;
 using RentMotorcycle.Repository.Repositories;
 
 namespace RentMotorcycle.Infrastructure.Providers

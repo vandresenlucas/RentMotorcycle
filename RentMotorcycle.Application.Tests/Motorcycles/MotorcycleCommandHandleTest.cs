@@ -1,5 +1,6 @@
 using Moq;
-using RentMotorcycle.Application.Motorcycles;
+using RentMotorcycle.Application.Motorcycles.CommandHandler;
+using RentMotorcycle.Application.Motorcycles.Results;
 using RentMotorcycle.Data.MotorcycleAggregate;
 
 namespace RentMotorcycle.Application.Tests.Motorcycles

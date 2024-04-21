@@ -1,4 +1,4 @@
-﻿using RentMotorcycle.Application.Motorcycles;
+﻿using RentMotorcycle.Application.Motorcycles.CommandHandler;
 
 namespace RentMotorcycle.Application.Tests.Motorcycles
 {

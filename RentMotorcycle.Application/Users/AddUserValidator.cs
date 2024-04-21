@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using RentMotorcycle.Domain.ProfileAggregate;
+using RentMotorcycle.Data.ProfileAggregate;
 using System.Text.RegularExpressions;
 
 namespace RentMotorcycle.Application.Users

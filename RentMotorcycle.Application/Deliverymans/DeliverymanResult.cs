@@ -1,7 +1,7 @@
 ﻿using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.DeliveryManAggregate;
 using RentMotorcycle.Data.LicenseTypeAggregate;
-using RentMotorcycle.Domain.UserAggregate;
+using RentMotorcycle.Data.UserAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans
 {

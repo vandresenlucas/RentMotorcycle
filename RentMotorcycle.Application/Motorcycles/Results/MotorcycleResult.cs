@@ -1,12 +1,12 @@
 ﻿using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.MotorcycleAggregate;
 
-namespace RentMotorcycle.Application.Motorcycles
+namespace RentMotorcycle.Application.Motorcycles.Results
 {
     public class MotorcycleResult : BaseEntityResult
     {
         public MotorcycleResult(
-            bool success = true, 
+            bool success = true,
             string? message = null,
             Motorcycle? motorcycle = null) : base(success, message)
         {
