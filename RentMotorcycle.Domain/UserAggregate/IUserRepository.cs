@@ -1,5 +1,4 @@
 ﻿using RentMotorcycle.Data.Base;
-using RentMotorcycle.Data.MotorcycleAggregate;
 
 namespace RentMotorcycle.Data.UserAggregate
 {

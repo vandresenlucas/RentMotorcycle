@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RentMotorcycle.Application\RentMotorcycle.Application.csproj" />
-    <ProjectReference Include="..\RentMotorcycle.Repository\RentMotorcycle.Repository.csproj" />
+    <ProjectReference Include="..\RentMotorcycle.Data\RentMotorcycle.Data.csproj" />
   </ItemGroup>
 
 </Project>
