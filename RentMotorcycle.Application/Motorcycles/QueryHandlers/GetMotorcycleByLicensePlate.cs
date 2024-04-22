@@ -3,7 +3,7 @@ using RentMotorcycle.Application.Base;
 
 namespace RentMotorcycle.Application.Motorcycles.QueryHandlers
 {
-    public class MotorcycleGetByLicensePlate : IRequest<BaseResult>
+    public class GetMotorcycleByLicensePlate : IRequest<BaseResult>
     {
         public string? licensePlate { get; set; }
     }

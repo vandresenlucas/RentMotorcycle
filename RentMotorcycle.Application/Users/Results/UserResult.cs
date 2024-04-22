@@ -1,7 +1,7 @@
 ﻿using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.DeliveryManAggregate;
 
-namespace RentMotorcycle.Application.Users
+namespace RentMotorcycle.Application.Users.Results
 {
     public class UserResult : BaseResult
     {
@@ -14,8 +14,8 @@ namespace RentMotorcycle.Application.Users
         }
 
         public UserResult(
-            object? deliveryman = null, 
-            bool success = true, 
+            object? deliveryman = null,
+            bool success = true,
             string? message = null,
             object? result = null) : base(success, message, result)
         {

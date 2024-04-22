@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
+using RentMotorcycle.Application.Deliverymans.CommandHandlers;
 
-namespace RentMotorcycle.Application.Deliverymans
+namespace RentMotorcycle.Application.Deliverymans.Validators
 {
     public class AddDeliverymanValidator : AbstractValidator<AddDeliverymanCommand>
     {

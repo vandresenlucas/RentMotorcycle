@@ -1,5 +1,6 @@
 ﻿using FluentValidation.TestHelper;
-using RentMotorcycle.Application.Deliverymans;
+using RentMotorcycle.Application.Deliverymans.CommandHandlers;
+using RentMotorcycle.Application.Deliverymans.Validators;
 
 namespace RentMotorcycle.Application.Tests.Deliverymans
 {

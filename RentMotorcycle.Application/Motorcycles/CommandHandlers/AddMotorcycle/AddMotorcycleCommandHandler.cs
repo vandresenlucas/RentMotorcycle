@@ -2,13 +2,13 @@
 using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.MotorcycleAggregate;
 
-namespace RentMotorcycle.Application.Motorcycles.CommandHandler
+namespace RentMotorcycle.Application.Motorcycles.CommandHandlers.AddMotorcycle
 {
-    public class MotorcycleCommandHandler : IRequestHandler<AddMotorcycleCommand, BaseResult>
+    public class AddMotorcycleCommandHandler : IRequestHandler<AddMotorcycleCommand, BaseResult>
     {
         private readonly IMotorcycleRepository _motorcycleRepository;
 
-        public MotorcycleCommandHandler(IMotorcycleRepository motorcycleRepository)
+        public AddMotorcycleCommandHandler(IMotorcycleRepository motorcycleRepository)
         {
             _motorcycleRepository = motorcycleRepository;
         }
@@ -22,7 +22,7 @@ namespace RentMotorcycle.Application.Motorcycles.CommandHandler
             if (motorcycleFound != null)
                 return new BaseResult(
                     false,
-                    message: string.Format($"A moto com placa '{motorCycle.LicensePlate}', já está cadastrada no sistema!"));
+                    message: string.Format($"A moto com placa '{motorCycle.LicensePlate}', já está cadastrada no sistema!!"));
 
             var newMotorcycle = await _motorcycleRepository.AddAsync(motorCycle);
 
