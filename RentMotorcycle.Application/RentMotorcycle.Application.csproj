@@ -13,7 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RentMotorcycle.Data\RentMotorcycle.Data.csproj" />
+    <ProjectReference Include="..\RentMotorcycle.Data\RentMotorcycle.Domain.csproj" />
+    <ProjectReference Include="..\RentMotorcycle.Domain\RentMotorcycle.Domain.csproj" />
   </ItemGroup>
 
 </Project>
