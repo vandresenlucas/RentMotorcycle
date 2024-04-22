@@ -1,5 +1,5 @@
 ﻿using FluentValidation.TestHelper;
-using RentMotorcycle.Application.Motorcycles.CommandHandler;
+using RentMotorcycle.Application.Motorcycles.CommandHandlers.AddMotorcycle;
 using RentMotorcycle.Application.Motorcycles.Validators;
 
 namespace RentMotorcycle.Application.Tests.Motorcycles

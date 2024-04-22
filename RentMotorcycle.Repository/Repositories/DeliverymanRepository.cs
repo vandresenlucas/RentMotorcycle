@@ -1,5 +1,4 @@
-﻿using MassTransit.Initializers;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using RentMotorcycle.Data.DeliveryManAggregate;
 
 namespace RentMotorcycle.Repository.Repositories

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RentMotorcycle.Application.Base;
-using RentMotorcycle.Application.Users;
+using RentMotorcycle.Application.Users.CommandHandlers;
 
 namespace RentMotorcycle.Controllers
 {

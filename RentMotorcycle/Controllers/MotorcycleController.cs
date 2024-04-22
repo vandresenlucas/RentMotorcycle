@@ -1,7 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RentMotorcycle.Application.Base;
-using RentMotorcycle.Application.Motorcycles.CommandHandler;
+using RentMotorcycle.Application.Motorcycles.CommandHandlers.AddMotorcycle;
+using RentMotorcycle.Application.Motorcycles.CommandHandlers.UpdateLicensePlateMotorcycle;
 using RentMotorcycle.Application.Motorcycles.QueryHandlers;
 
 namespace RentMotorcycle.Controllers
@@ -37,7 +38,23 @@ namespace RentMotorcycle.Controllers
         {
             try
             {
-                var command = new MotorcycleGetByLicensePlate { licensePlate = licensePlate };
+                var command = new GetMotorcycleByLicensePlate { licensePlate = licensePlate };
+                var result = await _mediator.Send(command);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new BaseResult(false, ex.Message));
+            }
+        }
+
+        [HttpPut(Name = "UpdateLicensePlateMotorcycle")]
+        public async Task<IActionResult> Put([FromQuery] Guid motorcycleId, [FromBody] UpdateLicensePlateMotorcycleCommand command )
+        {
+            try
+            {
+                command.MotorcycleId = motorcycleId;
                 var result = await _mediator.Send(command);
 
                 return Ok(result);

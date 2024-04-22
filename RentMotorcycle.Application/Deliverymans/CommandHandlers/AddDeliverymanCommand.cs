@@ -3,7 +3,7 @@ using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.DeliveryManAggregate;
 using RentMotorcycle.Data.LicenseTypeAggregate;
 
-namespace RentMotorcycle.Application.Deliverymans
+namespace RentMotorcycle.Application.Deliverymans.CommandHandlers
 {
     public class AddDeliverymanCommand : IRequest<BaseResult>
     {

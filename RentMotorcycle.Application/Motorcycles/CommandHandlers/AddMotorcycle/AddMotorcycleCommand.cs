@@ -2,7 +2,7 @@
 using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.MotorcycleAggregate;
 
-namespace RentMotorcycle.Application.Motorcycles.CommandHandler
+namespace RentMotorcycle.Application.Motorcycles.CommandHandlers.AddMotorcycle
 {
     public class AddMotorcycleCommand : IRequest<BaseResult>
     {

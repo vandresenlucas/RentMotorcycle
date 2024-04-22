@@ -1,10 +1,11 @@
 ﻿using MediatR;
 using RentMotorcycle.Application.Base;
-using RentMotorcycle.Application.Deliverymans;
+using RentMotorcycle.Application.Deliverymans.CommandHandlers;
+using RentMotorcycle.Application.Users.Results;
 using RentMotorcycle.Data.ProfileAggregate;
 using RentMotorcycle.Data.UserAggregate;
 
-namespace RentMotorcycle.Application.Users
+namespace RentMotorcycle.Application.Users.CommandHandlers
 {
     public class AddUserCommand : IRequest<UserResult>
     {

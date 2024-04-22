@@ -3,7 +3,7 @@ using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Deliverymans.Services;
 using RentMotorcycle.Data.DeliveryManAggregate;
 
-namespace RentMotorcycle.Application.Deliverymans
+namespace RentMotorcycle.Application.Deliverymans.CommandHandlers
 {
     public class DeliverymanCommandHandler : IRequestHandler<AddDeliverymanCommand, BaseResult>
     {
@@ -11,7 +11,7 @@ namespace RentMotorcycle.Application.Deliverymans
         private readonly IDeliverymanService _deliverymanService;
 
         public DeliverymanCommandHandler(
-            IDeliverymanRepository deliverymanRepository, 
+            IDeliverymanRepository deliverymanRepository,
             IDeliverymanService deliverymanService)
         {
             _deliverymanRepository = deliverymanRepository;
@@ -29,7 +29,7 @@ namespace RentMotorcycle.Application.Deliverymans
 
             var newDeliveryman = await _deliverymanRepository.AddAsync(deliveryman);
 
-            return new BaseResult(result    : newDeliveryman);
+            return new BaseResult(result: newDeliveryman);
         }
     }
 }

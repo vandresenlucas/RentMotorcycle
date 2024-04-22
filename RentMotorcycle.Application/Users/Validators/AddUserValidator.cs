@@ -1,8 +1,9 @@
 ﻿using FluentValidation;
+using RentMotorcycle.Application.Users.CommandHandlers;
 using RentMotorcycle.Data.ProfileAggregate;
 using System.Text.RegularExpressions;
 
-namespace RentMotorcycle.Application.Users
+namespace RentMotorcycle.Application.Users.Validators
 {
     public class AddUserValidator : AbstractValidator<AddUserCommand>
     {
@@ -34,7 +35,7 @@ namespace RentMotorcycle.Application.Users
                 .Cascade(CascadeMode.Stop)
                 .NotEmpty()
                 .WithMessage("O campo 'Perfil' deve ser preenchido!!")
-                .Must(profile => (profile == Profile.Admin || profile == Profile.Deliveryman))
+                .Must(profile => profile == Profile.Admin || profile == Profile.Deliveryman)
                 .WithMessage("O campo 'Perfil' é inválido!!");
         }
 

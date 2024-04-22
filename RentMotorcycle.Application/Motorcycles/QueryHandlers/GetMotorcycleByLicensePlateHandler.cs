@@ -4,17 +4,17 @@ using RentMotorcycle.Data.MotorcycleAggregate;
 
 namespace RentMotorcycle.Application.Motorcycles.QueryHandlers
 {
-    public class MotorcycleGetByLicensePlateHandler : IRequestHandler<MotorcycleGetByLicensePlate, BaseResult>
+    public class GetMotorcycleByLicensePlateHandler : IRequestHandler<GetMotorcycleByLicensePlate, BaseResult>
     {
 
         private readonly IMotorcycleRepository _motorcycleRepository;
 
-        public MotorcycleGetByLicensePlateHandler(IMotorcycleRepository motorcycleRepository)
+        public GetMotorcycleByLicensePlateHandler(IMotorcycleRepository motorcycleRepository)
         {
             _motorcycleRepository = motorcycleRepository;
         }
 
-        public async Task<BaseResult> Handle(MotorcycleGetByLicensePlate request, CancellationToken cancellationToken)
+        public async Task<BaseResult> Handle(GetMotorcycleByLicensePlate request, CancellationToken cancellationToken)
         {
             IList<Motorcycle>? motorcycles = new List<Motorcycle>();
 

@@ -1,4 +1,4 @@
-﻿using RentMotorcycle.Application.Deliverymans;
+﻿using RentMotorcycle.Application.Deliverymans.CommandHandlers;
 using RentMotorcycle.Data.LicenseTypeAggregate;
 
 namespace RentMotorcycle.Application.Tests.Deliverymans

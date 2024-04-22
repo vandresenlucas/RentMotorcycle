@@ -1,5 +1,5 @@
 ﻿using FluentValidation;
-using RentMotorcycle.Application.Motorcycles.CommandHandler;
+using RentMotorcycle.Application.Motorcycles.CommandHandlers.AddMotorcycle;
 
 namespace RentMotorcycle.Application.Motorcycles.Validators
 {

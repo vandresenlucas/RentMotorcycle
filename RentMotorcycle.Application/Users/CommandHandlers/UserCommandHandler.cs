@@ -1,9 +1,10 @@
 ﻿using MediatR;
 using RentMotorcycle.Application.Deliverymans.Services;
+using RentMotorcycle.Application.Users.Results;
 using RentMotorcycle.Data.ProfileAggregate;
 using RentMotorcycle.Data.UserAggregate;
 
-namespace RentMotorcycle.Application.Users
+namespace RentMotorcycle.Application.Users.CommandHandlers
 {
     public class UserCommandHandler : IRequestHandler<AddUserCommand, UserResult>
     {
@@ -29,9 +30,9 @@ namespace RentMotorcycle.Application.Users
                     false,
                     message: string.Format($"O usuário com Email '{user.Email}', já está cadastrado no sistema!!"));
 
-            var deliverymanduplicated = 
+            var deliverymanduplicated =
                 await _deliverymanService.VerifyDuplicatedDeliveryman(
-                    request.DeliveryMan.Cnpj, 
+                    request.DeliveryMan.Cnpj,
                     request.DeliveryMan.LicenseDriverNumber);
 
             if (!deliverymanduplicated.Success)
@@ -39,14 +40,14 @@ namespace RentMotorcycle.Application.Users
 
             var newUser = await _userRepository.AddAsync(user);
 
-            if (user.Profile == Profile.Deliveryman) 
+            if (user.Profile == Profile.Deliveryman)
             {
                 request.DeliveryMan.UserId = newUser.Id;
                 var newDeliveryMan = await _mediator.Send(request.DeliveryMan);
 
                 return new UserResult(result: newUser, deliveryman: newDeliveryMan.Result);
             }
-            
+
             return new UserResult(result: newUser);
         }
     }
