@@ -5,6 +5,6 @@ namespace RentMotorcycle.Application.Motorcycles.CommandHandler
 {
     public class GetMotorcycleCommand : IRequest<ListMotorcyclesResult>
     {
-        public string licensePlate { get; set; }
+        public string? licensePlate { get; set; }
     }
 }

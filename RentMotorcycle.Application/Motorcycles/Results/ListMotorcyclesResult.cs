@@ -8,11 +8,11 @@ namespace RentMotorcycle.Application.Motorcycles.Results
         public ListMotorcyclesResult(
             bool success = true, 
             string? message = null,
-            List<Motorcycle>? motorcycles = null) : base(success, message)
+            IList<Motorcycle>? motorcycles = null) : base(success, message)
         {
             Motorcycles = motorcycles;
         }
 
-        public List<Motorcycle>? Motorcycles;
+        public IList<Motorcycle>? Motorcycles;
     }
 }

@@ -10,9 +10,10 @@ namespace RentMotorcycle.Application.Motorcycles.Results
             string? message = null,
             Motorcycle? motorcycle = null) : base(success, message)
         {
+            Motorcycle = motorcycle;
         }
 
-        public Motorcycle? motorcycle { get; set; }
+        public Motorcycle? Motorcycle { get; set; }
         public string IdentifyCode { get; set; }
         public int Year { get; set; }
         public string Model { get; set; }

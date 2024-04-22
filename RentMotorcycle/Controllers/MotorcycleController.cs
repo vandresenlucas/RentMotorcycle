@@ -32,10 +32,11 @@ namespace RentMotorcycle.Controllers
         }
 
         [HttpGet(Name = "GetMotorcycle")]
-        public async Task<IActionResult> Get([FromBody] GetMotorcycleCommand command)
+        public async Task<IActionResult> Get([FromQuery] string? licensePlate)
         {
             try
             {
+                var command = new GetMotorcycleCommand { licensePlate = licensePlate };
                 var result = await _mediator.Send(command);
 
                 return Ok(result);

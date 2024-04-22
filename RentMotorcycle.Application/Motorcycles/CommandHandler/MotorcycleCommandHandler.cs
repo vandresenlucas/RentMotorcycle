@@ -32,9 +32,9 @@ namespace RentMotorcycle.Application.Motorcycles.CommandHandler
 
         public async Task<ListMotorcyclesResult> Handle(GetMotorcycleCommand request, CancellationToken cancellationToken)
         {
-            var motorcycles = new List<Motorcycle>();
+            IList<Motorcycle>? motorcycles = new List<Motorcycle>();
 
-            if (request.licensePlate != string.Empty)
+            if (!string.IsNullOrEmpty(request.licensePlate))
             {
                 var motorcycle = await _motorcycleRepository.GetByLicensePlate(request.licensePlate);
 
@@ -45,7 +45,9 @@ namespace RentMotorcycle.Application.Motorcycles.CommandHandler
             }
 
             motorcycles = await _motorcycleRepository.GetMotorcycles();
-            return new ListMotorcyclesResult(motorcycles: motorcycles);
+
+            var teste = new ListMotorcyclesResult(motorcycles: motorcycles);
+            return teste;
         }
     }
 }
