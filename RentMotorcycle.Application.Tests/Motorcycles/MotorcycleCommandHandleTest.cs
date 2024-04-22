@@ -1,6 +1,6 @@
 using Moq;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Motorcycles.CommandHandler;
-using RentMotorcycle.Application.Motorcycles.Results;
 using RentMotorcycle.Data.MotorcycleAggregate;
 
 namespace RentMotorcycle.Application.Tests.Motorcycles
@@ -31,7 +31,7 @@ namespace RentMotorcycle.Application.Tests.Motorcycles
 
             //Assert
             Assert.True(result.Success);
-            Assert.Equivalent(new MotorcycleResult(motorcycle: motorcycle), result);
+            Assert.Equivalent(new BaseResult(result: motorcycle), result);
             _repositoryMock.Verify(repo => repo.GetByLicensePlate("ABC123"), Times.Once);
             _repositoryMock.Verify(repo => repo.AddAsync(It.IsAny<Motorcycle>()), Times.Once);
         }

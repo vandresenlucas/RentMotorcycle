@@ -1,4 +1,5 @@
-﻿using RentMotorcycle.Data.DeliveryManAggregate;
+﻿using RentMotorcycle.Application.Base;
+using RentMotorcycle.Data.DeliveryManAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans.Services
 {
@@ -6,6 +7,6 @@ namespace RentMotorcycle.Application.Deliverymans.Services
     {
         Task<Deliveryman?> GetByCnpj(string cnpj);
         Task<Deliveryman?> GetByLicenseDriverNumber(string licenseDriverNumber);
-        Task<DeliverymanResult> VerifyDuplicatedDeliveryman(string cnpj, string licenseDriverNumber);
+        Task<BaseResult> VerifyDuplicatedDeliveryman(string cnpj, string licenseDriverNumber);
     }
 }

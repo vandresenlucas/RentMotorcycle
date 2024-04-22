@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Deliverymans;
 using RentMotorcycle.Data.ProfileAggregate;
 using RentMotorcycle.Data.UserAggregate;

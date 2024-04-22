@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Motorcycles.CommandHandler;
+using RentMotorcycle.Application.Motorcycles.QueryHandlers;
 
 namespace RentMotorcycle.Controllers
 {
@@ -36,7 +37,7 @@ namespace RentMotorcycle.Controllers
         {
             try
             {
-                var command = new GetMotorcycleCommand { licensePlate = licensePlate };
+                var command = new MotorcycleGetByLicensePlate { licensePlate = licensePlate };
                 var result = await _mediator.Send(command);
 
                 return Ok(result);

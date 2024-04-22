@@ -35,7 +35,7 @@ namespace RentMotorcycle.Application.Users
                     request.DeliveryMan.LicenseDriverNumber);
 
             if (!deliverymanduplicated.Success)
-                return new UserResult(deliveryResult: deliverymanduplicated);
+                return new UserResult(result: deliverymanduplicated);
 
             var newUser = await _userRepository.AddAsync(user);
 
@@ -44,10 +44,10 @@ namespace RentMotorcycle.Application.Users
                 request.DeliveryMan.UserId = newUser.Id;
                 var newDeliveryMan = await _mediator.Send(request.DeliveryMan);
 
-                return new UserResult(user: newUser, deliveryResult: newDeliveryMan);
+                return new UserResult(result: newUser, deliveryman: newDeliveryMan.Result);
             }
             
-            return new UserResult(user: newUser);
+            return new UserResult(result: newUser);
         }
     }
 }

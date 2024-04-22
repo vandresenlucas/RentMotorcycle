@@ -1,9 +1,8 @@
 ﻿using Moq;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Deliverymans;
 using RentMotorcycle.Application.Deliverymans.Services;
-using RentMotorcycle.Application.Tests.Motorcycles;
 using RentMotorcycle.Data.DeliveryManAggregate;
-using RentMotorcycle.Data.MotorcycleAggregate;
 
 namespace RentMotorcycle.Application.Tests.Deliverymans
 {
@@ -28,7 +27,7 @@ namespace RentMotorcycle.Application.Tests.Deliverymans
             //Arrange
             var deliveryman = DeliverymanTestModels.DeliverymanDefault();
             var command = CommandDeliverymanTestModels.AddDeliverymanCommandDefault();
-            var success = new DeliverymanResult();
+            var success = new BaseResult(true, null);
 
             _serviceMock.Setup(service => 
                 service.VerifyDuplicatedDeliveryman(command.Cnpj, command.LicenseDriverNumber))
@@ -40,7 +39,7 @@ namespace RentMotorcycle.Application.Tests.Deliverymans
 
             //Assert
             Assert.True(result.Success);
-            Assert.Equivalent(new DeliverymanResult(deliveryman: deliveryman), result);
+            Assert.Equivalent(new BaseResult(result: deliveryman), result);
 
             _serviceMock.Verify(service => service.VerifyDuplicatedDeliveryman(command.Cnpj, command.LicenseDriverNumber), Times.Once);
             _repositoryMock.Verify(repo => repo.AddAsync(It.IsAny<Deliveryman>()), Times.Once);
@@ -51,7 +50,7 @@ namespace RentMotorcycle.Application.Tests.Deliverymans
         {
             //Arrange
             var command = CommandDeliverymanTestModels.AddDeliverymanCommandDefault();
-            var error = new DeliverymanResult(false, message: $"O entregador com CNPJ '{command.Cnpj}', já está cadastrado no sistema!!");
+            var error = new BaseResult(false, message: $"O entregador com CNPJ '{command.Cnpj}', já está cadastrado no sistema!!");
 
             _serviceMock.Setup(service =>
                 service.VerifyDuplicatedDeliveryman(command.Cnpj, command.LicenseDriverNumber))
@@ -72,7 +71,7 @@ namespace RentMotorcycle.Application.Tests.Deliverymans
         {
             //Arrange
             var command = CommandDeliverymanTestModels.AddDeliverymanCommandDefault();
-            var error = new DeliverymanResult(false, message: $"O entregador com Número do CNH '{command.LicenseDriverNumber}', já está cadastrado no sistema!!");
+            var error = new BaseResult(false, message: $"O entregador com Número do CNH '{command.LicenseDriverNumber}', já está cadastrado no sistema!!");
 
             _serviceMock.Setup(service =>
                 service.VerifyDuplicatedDeliveryman(command.Cnpj, command.LicenseDriverNumber))
