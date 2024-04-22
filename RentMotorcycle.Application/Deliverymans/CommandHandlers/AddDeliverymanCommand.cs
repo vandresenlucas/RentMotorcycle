@@ -28,6 +28,7 @@ namespace RentMotorcycle.Application.Deliverymans.CommandHandlers
                 command.LicenseDriverNumber,
                 command.LicenseType,
                 command.LicenseImage,
+                DateTime.UtcNow,
                 command.UserId);
         }
     }

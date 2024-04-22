@@ -13,6 +13,7 @@ namespace RentMotorcycle.Application.Tests.Deliverymans
                 "123141231",
                 LicenseType.A,
                 null,
+                DateTime.SpecifyKind(Convert.ToDateTime("2024-04-21"), DateTimeKind.Utc),
                 Guid.NewGuid()
                 );
     }

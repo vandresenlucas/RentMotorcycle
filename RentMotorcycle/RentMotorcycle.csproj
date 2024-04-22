@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\RentMotorcycle.Application\RentMotorcycle.Application.csproj" />
     <ProjectReference Include="..\RentMotorcycle.Infrastructure\RentMotorcycle.Infrastructure.csproj" />
   </ItemGroup>
 
