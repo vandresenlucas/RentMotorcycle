@@ -11,5 +11,8 @@ namespace RentMotorcycle.Repository.Repositories
 
         public async Task<Motorcycle?> GetByLicensePlate(string licensePlate)
             => await _context.Set<Motorcycle>().FirstOrDefaultAsync(motorcycle => motorcycle.LicensePlate.Equals(licensePlate));
+
+        public async Task<IList<Motorcycle>> GetMotorcycles()
+            => await _context.Set<Motorcycle>().Select(motorcycle => motorcycle).ToListAsync();
     }
 }

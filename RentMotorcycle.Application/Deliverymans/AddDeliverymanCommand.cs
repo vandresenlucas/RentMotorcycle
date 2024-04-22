@@ -1,10 +1,11 @@
 ﻿using MediatR;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.DeliveryManAggregate;
 using RentMotorcycle.Data.LicenseTypeAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans
 {
-    public class AddDeliverymanCommand : IRequest<DeliverymanResult>
+    public class AddDeliverymanCommand : IRequest<BaseResult>
     {
         public string IdentifyCode { get; set; }
         public string Cnpj { get; set; }

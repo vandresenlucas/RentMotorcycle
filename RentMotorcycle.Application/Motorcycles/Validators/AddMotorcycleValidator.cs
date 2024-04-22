@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
+using RentMotorcycle.Application.Motorcycles.CommandHandler;
 
-namespace RentMotorcycle.Application.Motorcycles
+namespace RentMotorcycle.Application.Motorcycles.Validators
 {
     public class AddMotorcycleValidator : AbstractValidator<AddMotorcycleCommand>
     {

@@ -1,7 +1,7 @@
-﻿using RentMotorcycle.Data.MotorcycleAggregate;
-using RentMotorcycle.Domain.Repositories;
+﻿using RentMotorcycle.Data.Base;
+using RentMotorcycle.Data.MotorcycleAggregate;
 
-namespace RentMotorcycle.Domain.UserAggregate
+namespace RentMotorcycle.Data.UserAggregate
 {
     public interface IUserRepository : IRepository<User>
     {

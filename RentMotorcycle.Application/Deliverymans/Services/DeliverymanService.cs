@@ -1,4 +1,5 @@
-﻿using RentMotorcycle.Data.DeliveryManAggregate;
+﻿using RentMotorcycle.Application.Base;
+using RentMotorcycle.Data.DeliveryManAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans.Services
 {
@@ -17,19 +18,19 @@ namespace RentMotorcycle.Application.Deliverymans.Services
         public async Task<Deliveryman?> GetByLicenseDriverNumber(string licenseDriverNumber)
             => await _deliverymanRepository.GetByLicenseDriverNumber(licenseDriverNumber);
 
-        public async Task<DeliverymanResult> VerifyDuplicatedDeliveryman(string cnpj, string licenseDriverNumber)
+        public async Task<BaseResult> VerifyDuplicatedDeliveryman(string cnpj, string licenseDriverNumber)
         {
             if (await GetByCnpj(cnpj) != null)
-                return new DeliverymanResult(
+                return new BaseResult(
                     false,
                     message: string.Format($"O entregador com CNPJ '{cnpj}', já está cadastrado no sistema!!"));
 
             if (await GetByLicenseDriverNumber(licenseDriverNumber) != null)
-                return new DeliverymanResult(
+                return new BaseResult(
                     false,
                     message: string.Format($"O entregador com Número do CNH '{licenseDriverNumber}', já está cadastrado no sistema!!"));
 
-            return new DeliverymanResult();
+            return new BaseResult(true, null);
         }
     }
 }

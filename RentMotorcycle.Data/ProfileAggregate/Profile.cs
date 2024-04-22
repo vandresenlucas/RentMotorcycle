@@ -1,4 +1,4 @@
-﻿namespace RentMotorcycle.Domain.ProfileAggregate
+﻿namespace RentMotorcycle.Data.ProfileAggregate
 {
     public enum Profile
     {

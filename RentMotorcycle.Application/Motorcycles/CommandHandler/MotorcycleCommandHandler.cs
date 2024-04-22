@@ -1,9 +1,10 @@
 ﻿using MediatR;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.MotorcycleAggregate;
 
-namespace RentMotorcycle.Application.Motorcycles
+namespace RentMotorcycle.Application.Motorcycles.CommandHandler
 {
-    public class MotorcycleCommandHandler : IRequestHandler<AddMotorcycleCommand, MotorcycleResult>
+    public class MotorcycleCommandHandler : IRequestHandler<AddMotorcycleCommand, BaseResult>
     {
         private readonly IMotorcycleRepository _motorcycleRepository;
 
@@ -12,20 +13,20 @@ namespace RentMotorcycle.Application.Motorcycles
             _motorcycleRepository = motorcycleRepository;
         }
 
-        public async Task<MotorcycleResult> Handle(AddMotorcycleCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResult> Handle(AddMotorcycleCommand request, CancellationToken cancellationToken)
         {
             Motorcycle motorCycle = request;
 
             var motorcycleFound = await _motorcycleRepository.GetByLicensePlate(request.LicensePlate);
 
             if (motorcycleFound != null)
-                return new MotorcycleResult(
-                    false, 
+                return new BaseResult(
+                    false,
                     message: string.Format($"A moto com placa '{motorCycle.LicensePlate}', já está cadastrada no sistema!"));
 
             var newMotorcycle = await _motorcycleRepository.AddAsync(motorCycle);
 
-            return new MotorcycleResult(motorcycle: newMotorcycle);
+            return new BaseResult(result: newMotorcycle);
         }
     }
 }

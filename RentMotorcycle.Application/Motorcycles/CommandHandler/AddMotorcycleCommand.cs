@@ -1,9 +1,10 @@
 ﻿using MediatR;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.MotorcycleAggregate;
 
-namespace RentMotorcycle.Application.Motorcycles
+namespace RentMotorcycle.Application.Motorcycles.CommandHandler
 {
-    public class AddMotorcycleCommand : IRequest<MotorcycleResult>
+    public class AddMotorcycleCommand : IRequest<BaseResult>
     {
         public string IdentifyCode { get; set; }
         public int Year { get; set; }
@@ -14,7 +15,7 @@ namespace RentMotorcycle.Application.Motorcycles
         {
             if (command == null)
                 return null;
-            
+
             return new(
                 command.IdentifyCode,
                 command.Year,

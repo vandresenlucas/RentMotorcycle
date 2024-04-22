@@ -1,7 +1,8 @@
 ﻿using MediatR;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Deliverymans;
-using RentMotorcycle.Domain.ProfileAggregate;
-using RentMotorcycle.Domain.UserAggregate;
+using RentMotorcycle.Data.ProfileAggregate;
+using RentMotorcycle.Data.UserAggregate;
 
 namespace RentMotorcycle.Application.Users
 {

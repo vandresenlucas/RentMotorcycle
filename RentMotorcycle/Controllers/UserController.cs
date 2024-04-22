@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Users;
 
-namespace RentMotorcycle.Infrastructure
+namespace RentMotorcycle.Controllers
 {
     [ApiController]
     [Route("RentMotorcycle/[controller]")]

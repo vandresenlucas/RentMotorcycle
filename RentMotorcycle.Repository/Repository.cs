@@ -1,4 +1,4 @@
-﻿using RentMotorcycle.Domain.Repositories;
+﻿using RentMotorcycle.Data.Base;
 
 namespace RentMotorcycle.Repository
 {

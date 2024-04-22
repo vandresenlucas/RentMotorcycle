@@ -1,14 +1,14 @@
 ﻿using RentMotorcycle.Data.Base;
-using RentMotorcycle.Domain.ProfileAggregate;
+using RentMotorcycle.Data.ProfileAggregate;
 
-namespace RentMotorcycle.Domain.UserAggregate
+namespace RentMotorcycle.Data.UserAggregate
 {
     public class User : EntityBase
     {
         public User(
-            string name, 
-            string email, 
-            string password, 
+            string name,
+            string email,
+            string password,
             Profile profile,
             DateTime createdDate)
         {

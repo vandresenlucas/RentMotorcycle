@@ -1,6 +1,4 @@
 ﻿using FluentValidation;
-using RentMotorcycle.Data.LicenseTypeAggregate;
-using RentMotorcycle.Domain.ProfileAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans
 {

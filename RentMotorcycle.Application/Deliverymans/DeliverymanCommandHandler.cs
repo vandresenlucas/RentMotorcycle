@@ -1,10 +1,11 @@
 ﻿using MediatR;
+using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Deliverymans.Services;
 using RentMotorcycle.Data.DeliveryManAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans
 {
-    public class DeliverymanCommandHandler : IRequestHandler<AddDeliverymanCommand, DeliverymanResult>
+    public class DeliverymanCommandHandler : IRequestHandler<AddDeliverymanCommand, BaseResult>
     {
         private readonly IDeliverymanRepository _deliverymanRepository;
         private readonly IDeliverymanService _deliverymanService;
@@ -17,7 +18,7 @@ namespace RentMotorcycle.Application.Deliverymans
             _deliverymanService = deliverymanService;
         }
 
-        public async Task<DeliverymanResult> Handle(AddDeliverymanCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResult> Handle(AddDeliverymanCommand request, CancellationToken cancellationToken)
         {
             Deliveryman deliveryman = request;
 
@@ -28,7 +29,7 @@ namespace RentMotorcycle.Application.Deliverymans
 
             var newDeliveryman = await _deliverymanRepository.AddAsync(deliveryman);
 
-            return new DeliverymanResult(deliveryman: newDeliveryman);
+            return new BaseResult(result    : newDeliveryman);
         }
     }
 }
