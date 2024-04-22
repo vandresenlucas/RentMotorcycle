@@ -12,7 +12,8 @@ namespace RentMotorcycle.Data.DeliveryManAggregate
             DateTime dateOfBirth, 
             string licenseDriverNumber, 
             LicenseType licenseType, 
-            string licenseImage, 
+            string licenseImage,
+            DateTime createdDate,
             Guid userId)
         {
             IdentifyCode = identifyCode;
@@ -22,6 +23,7 @@ namespace RentMotorcycle.Data.DeliveryManAggregate
             LicenseType = licenseType;
             LicenseImage = licenseImage;
             UserId = userId;
+            CreatedDate = createdDate;
         }
 
         public string IdentifyCode { get; set; }
