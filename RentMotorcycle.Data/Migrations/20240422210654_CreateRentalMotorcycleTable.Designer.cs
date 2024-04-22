@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RentMotorcycle.Repository;
@@ -11,9 +12,11 @@ using RentMotorcycle.Repository;
 namespace RentMotorcycle.Repository.Migrations
 {
     [DbContext(typeof(RentMotorcycleContext))]
-    partial class RentMotorcycleContextModelSnapshot : ModelSnapshot
+    [Migration("20240422210654_CreateRentalMotorcycleTable")]
+    partial class CreateRentalMotorcycleTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,7 +58,7 @@ namespace RentMotorcycle.Repository.Migrations
                     b.Property<int>("LicenseType")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<Guid>("UserId")
@@ -99,7 +102,7 @@ namespace RentMotorcycle.Repository.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("Year")
@@ -140,7 +143,7 @@ namespace RentMotorcycle.Repository.Migrations
                     b.Property<int>("Profile")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -178,7 +181,7 @@ namespace RentMotorcycle.Repository.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -205,7 +208,7 @@ namespace RentMotorcycle.Repository.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("double precision");
 
-                    b.Property<DateTime?>("UpdatedDate")
+                    b.Property<DateTime>("UpdatedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");

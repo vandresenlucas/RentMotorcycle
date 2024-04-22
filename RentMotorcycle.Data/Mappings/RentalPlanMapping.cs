@@ -8,7 +8,6 @@ namespace RentMotorcycle.Data.Mappings
     {
         public void Configure(EntityTypeBuilder<RentalPlan> builder)
         {
-            builder.Property(property => property.Id).ValueGeneratedOnAdd().IsRequired();
             builder.Property(property => property.Period).IsRequired();
             builder.Property(property => property.Price).IsRequired();
         }
