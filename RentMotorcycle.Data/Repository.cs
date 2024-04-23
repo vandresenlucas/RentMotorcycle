@@ -27,7 +27,7 @@ namespace RentMotorcycle.Repository
             }
         }
 
-        public async Task<TEntity> GetById(Guid id)
+        public async Task<TEntity> GetByIdAsync(Guid id)
         {
             try
             {

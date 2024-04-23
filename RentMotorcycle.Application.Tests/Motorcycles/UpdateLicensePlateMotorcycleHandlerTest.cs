@@ -23,7 +23,7 @@ namespace RentMotorcycle.Application.Tests.Motorcycles
             var motorcycle = MotorcycleTestModels.MotorcycleDefault();
             var command = CommandMotorcycleTestModels.UpdateLicensePlateMotorcycleCommandDefault();
 
-            _repositoryMock.Setup(repo => repo.GetById(command.MotorcycleId)).ReturnsAsync(motorcycle);
+            _repositoryMock.Setup(repo => repo.GetByIdAsync(command.MotorcycleId)).ReturnsAsync(motorcycle);
             motorcycle.LicensePlate = command.LicensePlate;
             _repositoryMock.Setup(repo => repo.UpdateAsync(It.IsAny<Motorcycle>())).ReturnsAsync(motorcycle);
 
@@ -34,7 +34,7 @@ namespace RentMotorcycle.Application.Tests.Motorcycles
             Assert.True(result.Success);
             Assert.Equal(motorcycle.LicensePlate, "123ABC");
             Assert.Equivalent(new BaseResult(result: motorcycle), result);
-            _repositoryMock.Verify(repo => repo.GetById(motorcycle.Id), Times.Once);
+            _repositoryMock.Verify(repo => repo.GetByIdAsync(motorcycle.Id), Times.Once);
             _repositoryMock.Verify(repo => repo.UpdateAsync(It.IsAny<Motorcycle>()), Times.Once);
         }
 
@@ -43,7 +43,7 @@ namespace RentMotorcycle.Application.Tests.Motorcycles
         {
             //Arrange
             var command = new UpdateLicensePlateMotorcycleCommand { MotorcycleId = Guid.NewGuid(), LicensePlate = "ASD123" };
-            _repositoryMock.Setup(repo => repo.GetById(command.MotorcycleId)).ReturnsAsync((Motorcycle)null);
+            _repositoryMock.Setup(repo => repo.GetByIdAsync(command.MotorcycleId)).ReturnsAsync((Motorcycle)null);
 
             //Act
             var result = await _handler.Handle(command, CancellationToken.None);
@@ -51,7 +51,7 @@ namespace RentMotorcycle.Application.Tests.Motorcycles
             //Assert
             Assert.False(result.Success);
             Assert.Contains("Moto não foi encontrada no sistema!!", result.Message);
-            _repositoryMock.Verify(repo => repo.GetById(command.MotorcycleId), Times.Once);
+            _repositoryMock.Verify(repo => repo.GetByIdAsync(command.MotorcycleId), Times.Once);
             _repositoryMock.Verify(repo => repo.UpdateAsync(It.IsAny<Motorcycle>()), Times.Never);
         }
     }

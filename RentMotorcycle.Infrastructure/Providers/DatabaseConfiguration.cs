@@ -2,6 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using RentMotorcycle.Data.ProfileAggregate;
+using RentMotorcycle.Data.UserAggregate;
+using RentMotorcycle.Domain.RentalPlansAggregate;
 using RentMotorcycle.Repository;
 
 namespace RentMotorcycle.Infrastructure.Providers
@@ -16,12 +19,38 @@ namespace RentMotorcycle.Infrastructure.Providers
             return services;
         }
 
+        public static IApplicationBuilder AddInitialData(this IApplicationBuilder app)
+        {
+            using var serviceScop = app.ApplicationServices.CreateScope();
+            var context = serviceScop.ServiceProvider.GetService<RentMotorcycleContext>();
+
+            return app;
+        }
+
+        public static void AddInitialData(RentMotorcycleContext context)
+        {
+            var populated = context.Set<User>().Any();
+
+            if (populated)
+                return;
+
+            context.Add(new User("admin", "admin@gmail.com", "teste", Profile.Admin, DateTime.UtcNow));
+            context.Add(new RentalPlan(7, 30, DateTime.UtcNow));
+            context.Add(new RentalPlan(15, 28, DateTime.UtcNow));
+            context.Add(new RentalPlan(30, 22, DateTime.UtcNow));
+            context.Add(new RentalPlan(45, 20, DateTime.UtcNow));
+            context.Add(new RentalPlan(50, 18, DateTime.UtcNow));
+
+            context.SaveChanges();
+        }
+
         public static IApplicationBuilder RunMigrations(this IApplicationBuilder app)
         {
             using var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope();
             using var context = serviceScope.ServiceProvider.GetService<RentMotorcycleContext>();
 
             context.Database.Migrate();
+            AddInitialData(context);
 
             return app;
         }

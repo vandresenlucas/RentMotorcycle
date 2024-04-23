@@ -4,6 +4,6 @@
     {
         Task<TEntity> AddAsync(TEntity entity);
         Task<TEntity> UpdateAsync(TEntity entity);
-        Task<TEntity> GetById(Guid id);
+        Task<TEntity> GetByIdAsync(Guid id);
     }
 }

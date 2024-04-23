@@ -1,5 +1,6 @@
 ﻿using RentMotorcycle.Application.Base;
 using RentMotorcycle.Data.DeliveryManAggregate;
+using RentMotorcycle.Data.LicenseTypeAggregate;
 
 namespace RentMotorcycle.Application.Deliverymans.Services
 {
@@ -31,6 +32,19 @@ namespace RentMotorcycle.Application.Deliverymans.Services
                     message: string.Format($"O entregador com Número do CNH '{licenseDriverNumber}', já está cadastrado no sistema!!"));
 
             return new BaseResult(true, null);
+        }
+
+        public async Task<BaseResult> ValidateDeliverymanForRentMotorcycle(Guid deliverymanId)
+        {
+            var deliveryman = await _deliverymanRepository.GetByIdAsync(deliverymanId);
+
+            if (deliveryman == null)
+                return new BaseResult(false, "O Entregador informando não foi encontrado no sistema!!");
+
+            if (deliveryman.LicenseType == LicenseType.B)
+                return new BaseResult(false, "O Entregador informando não possuí habilitação para pilotar motos!!");
+
+            return new BaseResult(true, result: deliveryman);
         }
     }
 }
