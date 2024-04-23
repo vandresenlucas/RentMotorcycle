@@ -20,10 +20,12 @@ namespace RentMotorcycle.Infrastructure
 
         public static IApplicationBuilder Configure(this IApplicationBuilder app, IConfiguration configuration)
         {
+            app.AddInitialData();
             EfMigrations(app, configuration);
 
             return app;
         }
+
         private static void EfMigrations(IApplicationBuilder app, IConfiguration configuration)
         {
             var efOptions = new EfOptions();
@@ -34,6 +36,5 @@ namespace RentMotorcycle.Infrastructure
                 app.RunMigrations();
             }
         }
-
     }
 }

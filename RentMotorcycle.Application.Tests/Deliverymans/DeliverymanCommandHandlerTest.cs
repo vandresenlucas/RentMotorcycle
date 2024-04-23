@@ -13,7 +13,7 @@ namespace RentMotorcycle.Application.Tests.Deliverymans
         private readonly Mock<IDeliverymanService> _serviceMock;
 
         public DeliverymanCommandHandlerTest()
-        {
+        {   
             _repositoryMock = new Mock<IDeliverymanRepository>();
             _serviceMock = new Mock<IDeliverymanService>();
             _handler = new DeliverymanCommandHandler(

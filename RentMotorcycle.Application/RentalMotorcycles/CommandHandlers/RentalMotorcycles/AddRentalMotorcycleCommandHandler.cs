@@ -24,12 +24,12 @@ namespace RentMotorcycle.Application.RentalMotorcycles.CommandHandlers.RentalMot
 
         public async Task<BaseResult> Handle(AddRentalMotorcycleCommand request, CancellationToken cancellationToken)
         {
-            var rentalPlanFound = await _rentalPlanRepository.GetById(request.RentalPlanId);
+            var rentalPlanFound = await _rentalPlanRepository.GetByIdAsync(request.RentalPlanId);
 
             if (rentalPlanFound == null)
                 return new BaseResult(false, "O Plano informando não foi encontrado no sistema!!");
 
-            var validDeliverymanResult = await _deliverymanService.ValidateDeliverymaForRentMotorcycle(request.DeliverymanId);
+            var validDeliverymanResult = await _deliverymanService.ValidateDeliverymanForRentMotorcycle(request.DeliverymanId);
 
             if (!validDeliverymanResult.Success)
                 return validDeliverymanResult;

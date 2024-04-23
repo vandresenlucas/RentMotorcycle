@@ -34,9 +34,9 @@ namespace RentMotorcycle.Application.Deliverymans.Services
             return new BaseResult(true, null);
         }
 
-        public async Task<BaseResult> ValidateDeliverymaForRentMotorcycle(Guid deliverymanId)
+        public async Task<BaseResult> ValidateDeliverymanForRentMotorcycle(Guid deliverymanId)
         {
-            var deliveryman = await _deliverymanRepository.GetById(deliverymanId);
+            var deliveryman = await _deliverymanRepository.GetByIdAsync(deliverymanId);
 
             if (deliveryman == null)
                 return new BaseResult(false, "O Entregador informando não foi encontrado no sistema!!");

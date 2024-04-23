@@ -15,7 +15,7 @@ namespace RentMotorcycle.Application.Motorcycles.CommandHandlers.UpdateLicensePl
 
         public async Task<BaseResult> Handle(UpdateLicensePlateMotorcycleCommand request, CancellationToken cancellationToken)
         {
-            var motorcycleFound = await _motorcycleRepository.GetById(request.MotorcycleId);
+            var motorcycleFound = await _motorcycleRepository.GetByIdAsync(request.MotorcycleId);
 
             if (motorcycleFound == null)
                 return new BaseResult(

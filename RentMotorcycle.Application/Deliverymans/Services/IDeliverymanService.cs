@@ -8,6 +8,6 @@ namespace RentMotorcycle.Application.Deliverymans.Services
         Task<Deliveryman?> GetByCnpj(string cnpj);
         Task<Deliveryman?> GetByLicenseDriverNumber(string licenseDriverNumber);
         Task<BaseResult> VerifyDuplicatedDeliveryman(string cnpj, string licenseDriverNumber);
-        Task<BaseResult> ValidateDeliverymaForRentMotorcycle(Guid deliverymanId);
+        Task<BaseResult> ValidateDeliverymanForRentMotorcycle(Guid deliverymanId);
     }
 }
