@@ -29,6 +29,11 @@ namespace RentMotorcycle.Infrastructure.Providers
 
         public static void AddInitialData(RentMotorcycleContext context)
         {
+            var populated = context.Set<User>().Any();
+
+            if (populated)
+                return;
+
             context.Add(new User("admin", "admin@gmail.com", "teste", Profile.Admin, DateTime.UtcNow));
             context.Add(new RentalPlan(7, 30, DateTime.UtcNow));
             context.Add(new RentalPlan(15, 28, DateTime.UtcNow));
