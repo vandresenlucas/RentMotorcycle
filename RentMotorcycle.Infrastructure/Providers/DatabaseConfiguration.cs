@@ -23,7 +23,6 @@ namespace RentMotorcycle.Infrastructure.Providers
         {
             using var serviceScop = app.ApplicationServices.CreateScope();
             var context = serviceScop.ServiceProvider.GetService<RentMotorcycleContext>();
-            AddInitialData(context);
 
             return app;
         }
@@ -46,6 +45,7 @@ namespace RentMotorcycle.Infrastructure.Providers
             using var context = serviceScope.ServiceProvider.GetService<RentMotorcycleContext>();
 
             context.Database.Migrate();
+            AddInitialData(context);
 
             return app;
         }
