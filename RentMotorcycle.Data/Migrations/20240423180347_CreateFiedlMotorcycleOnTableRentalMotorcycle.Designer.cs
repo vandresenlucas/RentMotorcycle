@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RentMotorcycle.Repository;
@@ -11,9 +12,11 @@ using RentMotorcycle.Repository;
 namespace RentMotorcycle.Repository.Migrations
 {
     [DbContext(typeof(RentMotorcycleContext))]
-    partial class RentMotorcycleContextModelSnapshot : ModelSnapshot
+    [Migration("20240423180347_CreateFiedlMotorcycleOnTableRentalMotorcycle")]
+    partial class CreateFiedlMotorcycleOnTableRentalMotorcycle
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

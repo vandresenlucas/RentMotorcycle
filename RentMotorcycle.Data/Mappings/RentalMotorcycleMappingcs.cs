@@ -13,6 +13,7 @@ namespace RentMotorcycle.Data.Mappings
             builder.Property(property => property.EndDate).HasMaxLength(50).IsRequired();
             builder.Property(property => property.EstimatedCompletionDate).HasMaxLength(100).IsRequired();
             builder.HasOne(rentalMotorcycle => rentalMotorcycle.DeliverymanFk).WithMany();
+            builder.HasOne(rentalMotorcycle => rentalMotorcycle.MotorcycleFk).WithMany();
         }
     }
 }

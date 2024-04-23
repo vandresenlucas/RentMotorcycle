@@ -11,6 +11,7 @@ namespace RentMotorcycle.Application.RentalMotorcycles.CommandHandlers.RentalMot
         public DateTime EndDate { get; set; }
         public DateTime EstimatedCompletionDate { get; set; }
         public Guid DeliverymanId { get; set; }
+        public Guid MotorcycleId { get; set; }
 
         public static implicit operator RentalMotorcycle(AddRentalMotorcycleCommand command)
         {
@@ -23,6 +24,7 @@ namespace RentMotorcycle.Application.RentalMotorcycles.CommandHandlers.RentalMot
                 command.EndDate,
                 command.EstimatedCompletionDate,
                 command.DeliverymanId,
+                command.MotorcycleId,
                 DateTime.UtcNow
             );
         }

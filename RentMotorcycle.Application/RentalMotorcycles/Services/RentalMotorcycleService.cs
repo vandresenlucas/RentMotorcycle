@@ -21,9 +21,10 @@ namespace RentMotorcycle.Application.RentalMotorcycles.Services
             {
                 DeliverymanId = command.DeliverymanId,
                 RentalPlanId = command.RentalPlanId,
-                StartDate = startDate,
-                EndDate = endDate,
-                EstimatedCompletionDate = endDate
+                StartDate = DateTime.SpecifyKind(startDate, DateTimeKind.Utc),
+                EndDate = DateTime.SpecifyKind(endDate, DateTimeKind.Utc),
+                EstimatedCompletionDate = DateTime.SpecifyKind(endDate, DateTimeKind.Utc),
+                MotorcycleId = command.MotorcycleId
             };
 
             var newRentalMotorcycle = await _rentalMotorcycleRepository.AddAsync(rentalMotorcycle);

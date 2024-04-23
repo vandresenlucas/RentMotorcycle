@@ -1,5 +1,6 @@
 ﻿using RentMotorcycle.Data.Base;
 using RentMotorcycle.Data.DeliveryManAggregate;
+using RentMotorcycle.Data.MotorcycleAggregate;
 using RentMotorcycle.Domain.RentalPlansAggregate;
 
 namespace RentMotorcycle.Domain.RentalMotorcycleAggregate
@@ -12,6 +13,7 @@ namespace RentMotorcycle.Domain.RentalMotorcycleAggregate
             DateTime endDate, 
             DateTime estimatedCompletionDate, 
             Guid deliverymanId,
+            Guid motorcycleId,
             DateTime createdDate)
         {
             RentalPlanId = rentalPlanId;
@@ -19,6 +21,7 @@ namespace RentMotorcycle.Domain.RentalMotorcycleAggregate
             EndDate = endDate;
             EstimatedCompletionDate = estimatedCompletionDate;
             DeliverymanId = deliverymanId;
+            MotorcycleId = motorcycleId;
             CreatedDate = createdDate;
         }
 
@@ -29,5 +32,7 @@ namespace RentMotorcycle.Domain.RentalMotorcycleAggregate
         public DateTime EstimatedCompletionDate { get; set; }
         public Deliveryman DeliverymanFk { get; set; }
         public Guid DeliverymanId { get; set; }
+        public Motorcycle MotorcycleFk { get; set; }
+        public Guid MotorcycleId { get; set; }
     }
 }

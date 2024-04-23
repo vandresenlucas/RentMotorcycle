@@ -54,5 +54,16 @@ namespace RentMotorcycle.Repository
 
             return entity;
         }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var result = await _context.Set<TEntity>().FirstOrDefaultAsync(p => p.Id == id);
+
+            if (result != null)
+            {
+                _context.Remove(result);
+                _context.SaveChanges();
+            }
+        }
     }
 }
