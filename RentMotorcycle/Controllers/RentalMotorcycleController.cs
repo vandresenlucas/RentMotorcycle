@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RentMotorcycle.Application.Base;
+using RentMotorcycle.Application.RentalMotorcycles.CommandHandlers.CalculateRentalMotorcyclePrice;
 using RentMotorcycle.Application.RentalMotorcycles.CommandHandlers.RentalMotorcycles;
 
 namespace RentMotorcycle.Controllers
@@ -21,6 +22,22 @@ namespace RentMotorcycle.Controllers
         {
             try
             {
+                var result = await _mediator.Send(command);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new BaseResult(false, ex.Message));
+            }
+        }
+
+        [HttpGet(Name = "CalculateRentalMotorcyclePrice")]
+        public async Task<IActionResult> Get([FromQuery] Guid rentalMotorcycleId, [FromQuery] DateTime returnDate)
+        {
+            try
+            {
+                var command = new CalculateRentalMotorcyclePriceCommand { RentalMotorcycleId = rentalMotorcycleId, ReturnDate = returnDate };
                 var result = await _mediator.Send(command);
 
                 return Ok(result);
