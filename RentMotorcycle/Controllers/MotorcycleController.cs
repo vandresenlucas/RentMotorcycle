@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Motorcycles.CommandHandlers.AddMotorcycle;
+using RentMotorcycle.Application.Motorcycles.CommandHandlers.DeleteMotorcycle;
 using RentMotorcycle.Application.Motorcycles.CommandHandlers.UpdateLicensePlateMotorcycle;
 using RentMotorcycle.Application.Motorcycles.QueryHandlers;
 
@@ -55,6 +56,22 @@ namespace RentMotorcycle.Controllers
             try
             {
                 command.MotorcycleId = motorcycleId;
+                var result = await _mediator.Send(command);
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new BaseResult(false, ex.Message));
+            }
+        }
+
+        [HttpDelete(Name = "DeleteMotorcycle")]
+        public async Task<IActionResult> Delete([FromQuery] Guid motorcycleId)
+        {
+            try
+            {
+                var command = new DeleteMotorcycleCommand { MotorcycleId = motorcycleId };
                 var result = await _mediator.Send(command);
 
                 return Ok(result);
