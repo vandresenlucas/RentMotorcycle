@@ -1,8 +1,8 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using RabbitMQ.Client;
 using RentMotorcycle.Application.Motorcycles.MessageBroker;
+using RentMotorcycle.Application.RentalMotorcycles.MessageBroker;
 
 namespace RentMotorcycle.Infrastructure.Providers
 {
@@ -13,6 +13,7 @@ namespace RentMotorcycle.Infrastructure.Providers
             services.AddMassTransit(x =>
             {
                 x.AddConsumer<AddMotorcycleEventConsumer>();
+                x.AddConsumer<AddRentalMotorcycleConsumer>();
 
                 x.UsingRabbitMq((context, cfg) =>
                 {
@@ -25,11 +26,12 @@ namespace RentMotorcycle.Infrastructure.Providers
                             h.Password(configuration.GetValue<string>("BrokerConfiguration:Password"));
                         });
 
-                    cfg.ReceiveEndpoint("ms-fixed-income-investment-mq", e =>
+                    cfg.ReceiveEndpoint("re-rent-motorcycle", e =>
                     {
                         e.ConfigureConsumer<AddMotorcycleEventConsumer>(context, e => e.UseConcurrentMessageLimit(2));
+                        e.ConfigureConsumer<AddRentalMotorcycleConsumer>(context, e => e.UseConcurrentMessageLimit(2));
 
-                        e.Bind("ms-fixed-income-investment-ex", it => it.RoutingKey = "fi-investment-mq");
+                        e.Bind("b-rent-motorcycle", it => it.RoutingKey = "rk-rent-motorcycle");
                         e.BindQueue = true;
 
                         e.PrefetchCount = 4;

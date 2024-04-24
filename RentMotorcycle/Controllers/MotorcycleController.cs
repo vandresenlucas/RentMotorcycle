@@ -25,23 +25,13 @@ namespace RentMotorcycle.Controllers
         }
 
         [HttpPost(Name = "AddMotorcycle")]
-        public async Task<IActionResult> Post([FromBody] AddMotorcycleCommand command)
+        public async Task<IActionResult> Post([FromBody] AddMotorcycleEvent addEvent)
         {
             try
             {
-                var message = new AddMotorcycleEvent
-                {
-                    IdentifyCode = command.IdentifyCode,
-                    LicensePlate = command.LicensePlate,
-                    Model = command.Model,
-                    Year = command.Year
-                };
+                await _publishEndpoint.Publish(addEvent, x => x.SetRoutingKey("rk-add-motorcycle"));
 
-                await _publishEndpoint.Publish(message, x => x.SetRoutingKey("fi-investment-mq"));
-
-                //var result = await _mediator.Send(command);
-
-                return Ok();
+                return Ok("Moto enviada para ser adicionada no sistema!!");
             }
             catch (Exception ex)
             {
