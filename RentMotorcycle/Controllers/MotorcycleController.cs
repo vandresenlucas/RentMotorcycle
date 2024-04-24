@@ -1,10 +1,13 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Motorcycles.CommandHandlers.AddMotorcycle;
 using RentMotorcycle.Application.Motorcycles.CommandHandlers.DeleteMotorcycle;
 using RentMotorcycle.Application.Motorcycles.CommandHandlers.UpdateLicensePlateMotorcycle;
+using RentMotorcycle.Application.Motorcycles.MessageBroker;
 using RentMotorcycle.Application.Motorcycles.QueryHandlers;
+using static MassTransit.Monitoring.Performance.BuiltInCounters;
 
 namespace RentMotorcycle.Controllers
 {
@@ -13,10 +16,12 @@ namespace RentMotorcycle.Controllers
     public class MotorcycleController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public MotorcycleController(IMediator mediator)
+        public MotorcycleController(IMediator mediator, IPublishEndpoint publishEndpoint)
         {
             _mediator = mediator;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpPost(Name = "AddMotorcycle")]
@@ -24,9 +29,19 @@ namespace RentMotorcycle.Controllers
         {
             try
             {
-                var result = await _mediator.Send(command);
+                var message = new AddMotorcycleEvent
+                {
+                    IdentifyCode = command.IdentifyCode,
+                    LicensePlate = command.LicensePlate,
+                    Model = command.Model,
+                    Year = command.Year
+                };
 
-                return Ok(result);
+                await _publishEndpoint.Publish(message, x => x.SetRoutingKey("fi-investment-mq"));
+
+                //var result = await _mediator.Send(command);
+
+                return Ok();
             }
             catch (Exception ex)
             {
