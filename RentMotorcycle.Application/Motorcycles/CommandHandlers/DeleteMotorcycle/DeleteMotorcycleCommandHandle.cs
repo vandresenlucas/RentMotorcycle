@@ -18,7 +18,7 @@ namespace RentMotorcycle.Application.Motorcycles.CommandHandlers.DeleteMotorcycl
 
         public async Task<BaseResult> Handle(DeleteMotorcycleCommand request, CancellationToken cancellationToken)
         {
-            var rentalMotorcycleFound = await _rentalMotorcycleRepository.GetRentalByMotorcycle(request.MotorcycleId);
+            var rentalMotorcycleFound = await _rentalMotorcycleRepository.GetRentalMotorcycleByMotorcycle(request.MotorcycleId);
 
             if (rentalMotorcycleFound.Count > 0)
                 return new BaseResult(false, message: "A moto selecionada possuí registro(s) de locação(ões)!!");

@@ -4,6 +4,6 @@ namespace RentMotorcycle.Domain.RentalMotorcycleAggregate
 {
     public interface IRentalMotorcycleRepository : IRepository<RentalMotorcycle>
     {
-        Task<IList<RentalMotorcycle>> GetRentalByMotorcycle(Guid motorcycleId);
+        Task<IList<RentalMotorcycle>> GetRentalMotorcycleByMotorcycle(Guid motorcycleId);
     }
 }

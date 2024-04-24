@@ -11,6 +11,7 @@ namespace RentMotorcycle.Infrastructure
         public static IServiceCollection RegisterServices(this IServiceCollection services, IConfiguration configuration) 
         {
             services.RegisterDatabase(configuration);
+            services.ConfigureRabbitMq(configuration);
 
             services.ConfigureServices();
             services.ConfigureMediatr();

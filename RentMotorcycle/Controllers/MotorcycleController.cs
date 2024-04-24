@@ -1,10 +1,13 @@
-﻿using MediatR;
+﻿using MassTransit;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using RentMotorcycle.Application.Base;
 using RentMotorcycle.Application.Motorcycles.CommandHandlers.AddMotorcycle;
 using RentMotorcycle.Application.Motorcycles.CommandHandlers.DeleteMotorcycle;
 using RentMotorcycle.Application.Motorcycles.CommandHandlers.UpdateLicensePlateMotorcycle;
+using RentMotorcycle.Application.Motorcycles.MessageBroker;
 using RentMotorcycle.Application.Motorcycles.QueryHandlers;
+using static MassTransit.Monitoring.Performance.BuiltInCounters;
 
 namespace RentMotorcycle.Controllers
 {
@@ -13,20 +16,22 @@ namespace RentMotorcycle.Controllers
     public class MotorcycleController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IPublishEndpoint _publishEndpoint;
 
-        public MotorcycleController(IMediator mediator)
+        public MotorcycleController(IMediator mediator, IPublishEndpoint publishEndpoint)
         {
             _mediator = mediator;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpPost(Name = "AddMotorcycle")]
-        public async Task<IActionResult> Post([FromBody] AddMotorcycleCommand command)
+        public async Task<IActionResult> Post([FromBody] AddMotorcycleEvent addEvent)
         {
             try
             {
-                var result = await _mediator.Send(command);
+                await _publishEndpoint.Publish(addEvent, x => x.SetRoutingKey("rk-add-motorcycle"));
 
-                return Ok(result);
+                return Ok("Moto enviada para ser adicionada no sistema!!");
             }
             catch (Exception ex)
             {

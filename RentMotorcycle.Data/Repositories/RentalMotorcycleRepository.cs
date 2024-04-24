@@ -10,7 +10,7 @@ namespace RentMotorcycle.Data.Repositories
         {
         }
 
-        public async Task<IList<RentalMotorcycle>> GetRentalByMotorcycle(Guid motorcycleId)
+        public async Task<IList<RentalMotorcycle>> GetRentalMotorcycleByMotorcycle(Guid motorcycleId)
             => await _context.Set<RentalMotorcycle>().Where(rm => rm.MotorcycleId.Equals(motorcycleId)).ToListAsync();
     }
 }
