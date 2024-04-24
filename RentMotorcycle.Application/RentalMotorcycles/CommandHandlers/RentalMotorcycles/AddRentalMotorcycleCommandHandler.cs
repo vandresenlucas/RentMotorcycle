@@ -34,6 +34,11 @@ namespace RentMotorcycle.Application.RentalMotorcycles.CommandHandlers.RentalMot
             if (!validDeliverymanResult.Success)
                 return validDeliverymanResult;
 
+            var checkRentalMotorcycle = await _rentalMotorcycleService.CheckMotorcycleRental(request.MotorcycleId);
+
+            if (!checkRentalMotorcycle.Success)
+                return checkRentalMotorcycle;
+
             var rentalMotorcycle = await _rentalMotorcycleService.AddRentalMotorcycle(request, rentalPlanFound.Period);
 
             return new BaseResult(true, result: rentalMotorcycle);

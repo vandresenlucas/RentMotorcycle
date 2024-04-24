@@ -12,5 +12,8 @@ namespace RentMotorcycle.Data.Repositories
 
         public async Task<IList<RentalMotorcycle>> GetRentalMotorcycleByMotorcycle(Guid motorcycleId)
             => await _context.Set<RentalMotorcycle>().Where(rm => rm.MotorcycleId.Equals(motorcycleId)).ToListAsync();
+
+        public async Task<bool> CheckMotorcycleRental(Guid motorcycleId, DateTime rentDate)
+            => await _context.Set<RentalMotorcycle>().AnyAsync(rm => rm.MotorcycleId.Equals(motorcycleId) && (rentDate >= rm.StartDate && rentDate <= rm.EndDate));
     }
 }
