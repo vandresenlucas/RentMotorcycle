@@ -1,4 +1,6 @@
-﻿using RentMotorcycle.Application.RentalMotorcycles.CommandHandlers.RentalMotorcycles;
+﻿using MassTransit.Initializers;
+using RentMotorcycle.Application.Base;
+using RentMotorcycle.Application.RentalMotorcycles.CommandHandlers.RentalMotorcycles;
 using RentMotorcycle.Domain.RentalMotorcycleAggregate;
 
 namespace RentMotorcycle.Application.RentalMotorcycles.Services
@@ -30,6 +32,16 @@ namespace RentMotorcycle.Application.RentalMotorcycles.Services
             var newRentalMotorcycle = await _rentalMotorcycleRepository.AddAsync(rentalMotorcycle);
 
             return newRentalMotorcycle;
+        }
+
+        public async Task<BaseResult> CheckMotorcycleRental(Guid motorcycleId)
+        {
+            var motorcycleFreeforRent = await _rentalMotorcycleRepository.CheckMotorcycleRental(motorcycleId, DateTime.UtcNow.AddDays(15));
+
+            if (motorcycleFreeforRent)
+                return new BaseResult(false, "Moto já alugada nesta data!!");
+
+            return new BaseResult(true, message: string.Empty);
         }
     }
 }

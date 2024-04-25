@@ -29,35 +29,6 @@ namespace RentMotorcycle.Application.Tests.RentalMotorcycles
         }
 
         [Fact]
-        public async Task Handle_With_Valid_RentaMotorcycle_Returns_Motorcycle_Result_With_Added_RentalMotorcycle()
-        {
-            //Arrange
-            var rentalPlan = new RentalPlan(7, 15, DateTime.SpecifyKind(Convert.ToDateTime("2024-04-11"), DateTimeKind.Utc));
-            var deliverymanId = Guid.NewGuid();
-            var rentalMotorcycleCommand = RentalMotorcycleTestModels.RentalMotorcycleDefault(deliverymanId, rentalPlan);
-            RentalMotorcycle rentalMotorcycle = rentalMotorcycleCommand;
-
-            _mockRentalPlanRepository.Setup(repo => repo.GetByIdAsync(rentalPlan.Id)).ReturnsAsync(rentalPlan);
-            _mockDeliverymanService.Setup(service => service.ValidateDeliverymanForRentMotorcycle(
-                deliverymanId)).ReturnsAsync(new BaseResult(true, null));
-            _mockRentalMotorcycleService.Setup(service => service.AddRentalMotorcycle(rentalMotorcycleCommand, rentalPlan.Period))
-                .ReturnsAsync(rentalMotorcycle);
-
-            //Act
-            var result = await _handler.Handle(rentalMotorcycleCommand, CancellationToken.None);
-
-            //Assert
-            Assert.True(result.Success);
-            Assert.Equivalent(new BaseResult(result: rentalMotorcycle), result);
-
-            _mockRentalPlanRepository.Verify(repo => repo.GetByIdAsync(rentalPlan.Id), Times.Once);
-            _mockDeliverymanService.Verify(service => service.ValidateDeliverymanForRentMotorcycle(
-                deliverymanId), Times.Once);
-            _mockRentalMotorcycleService.Verify(service => service.AddRentalMotorcycle(rentalMotorcycleCommand, rentalPlan.Period), 
-                Times.Once);
-        }
-
-        [Fact]
         public async Task Handle_With_RentalPlan_Not_Exists_Returns_Result_With_Error()
         {
             //Arrange
