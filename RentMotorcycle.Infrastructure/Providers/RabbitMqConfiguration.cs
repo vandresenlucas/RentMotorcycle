@@ -17,13 +17,13 @@ namespace RentMotorcycle.Infrastructure.Providers
 
                 x.UsingRabbitMq((context, cfg) =>
                 {
-                    cfg.Host(configuration.GetValue<string>("BrokerConfiguration:Host"),
-                        configuration.GetValue<ushort>("BrokerConfiguration:Port"),
-                        configuration.GetValue<string>("BrokerConfiguration:VHost"),
+                    cfg.Host(configuration.GetValue<string>("BrokerConfiguration:RABBITMQ_HOST"),
+                        configuration.GetValue<ushort>("BrokerConfiguration:RABBITMQ_PORT"),
+                        configuration.GetValue<string>("BrokerConfiguration:RABBITMQ_VHOST"),
                         h =>
                         {
-                            h.Username(configuration.GetValue<string>("BrokerConfiguration:User"));
-                            h.Password(configuration.GetValue<string>("BrokerConfiguration:Password"));
+                            h.Username(configuration.GetValue<string>("BrokerConfiguration:RABBITMQ_USER"));
+                            h.Password(configuration.GetValue<string>("BrokerConfiguration:RABBITMQ_PASS"));
                         });
 
                     cfg.ReceiveEndpoint("re-rent-motorcycle", e =>
