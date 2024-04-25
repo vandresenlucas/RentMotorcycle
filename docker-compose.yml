@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: masstransit/rabbitmq:latest
+    container_name: "rabbitmq"
+    ports:
+      - "5672:5672" 
+      - "15672:15672" 
+    environment:
+      RABBITMQ_DEFAULT_USER: "guest" 
+      RABBITMQ_DEFAULT_PASS: "guest" 
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: "postgres" 
+      POSTGRES_PASSWORD: "lucas" 
+      POSTGRES_DB: "RentMotorcycle" 
+      
+  rentmotorcycle:
+    build: 
+      context: .
+      dockerfile: RentMotorcycle/Dockerfile
+    depends_on:
+      - rabbitmq
+    environment:
+      RABBITMQ_HOST: "rabbitmq" # Nome do serviço do RabbitMQ no Docker Compose
+      RABBITMQ_VHOST: "/"
+      RABBITMQ_PORT: "5672" # Porta do RabbitMQ
+      RABBITMQ_USER: "guest"
+      RABBITMQ_PASS: "guest"
+      POSTGRES_HOST: "postgres" # Nome do serviço do PostgreSQL no Docker Compose
+      POSTGRES_PORT: "5432" # Porta do PostgreSQL
+      POSTGRES_USER: "postgres" # Usuário do PostgreSQL
+      POSTGRES_PASSWORD: "lucas" # Senha do PostgreSQL
+      POSTGRES_DB: "RentMotorcycle" # Nome do banco de dados
